@@ -2,11 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Bienvenue sur Tokepi !{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('lib/bootstrap/bootstrap.min.css') }}">
+        {% endblock %}
     </head>
     <body>
+    <nav class="navbar navbar-expand navbar-dark">
+
+    </nav>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('lib/bootstrap/bootstrap.min.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
