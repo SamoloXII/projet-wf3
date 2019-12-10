@@ -18,10 +18,10 @@ class RegistrationLogController extends AbstractController
     /**
      * @Route("/")
      */
-    public function index()
-    {
-
-    }
+//    public function index()
+//    {
+//
+//    }
 
     /**
      * @Route("/registration")
