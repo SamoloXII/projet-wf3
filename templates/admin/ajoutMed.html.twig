@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">Ajouter un nouveau médicament</h1>
+    <div class="container">
+        {{ form_start(form) }}
+        <div class="row mx-auto">
+                <div class="col-6">
+                    {{ form_row(form.nom) }}
+                    {{ form_row(form.type) }}
+                    {{ form_row(form.prix) }}
+                    {{ form_row(form.descriptionCourte) }}
+                    {{ form_row(form.image) }}
+                    {{ form_row(form.substanceActive) }}
+                    {{ form_row(form.dosageSubstance) }}
+                </div>
+                <div class="col-6">
+                    {{ form_row(form.methodeUtilisation) }}
+                    {{ form_row(form.tauxRemboursement) }}
+                    {{ form_row(form.symptomes) }}
+                    {{ form_row(form.contreIndications) }}
+                    {{ form_row(form.effetsIndesirables) }}
+                    {{ form_row(form.conservation) }}
+                </div>
+        </div>
+
+        <div class="col-6 mx-auto">
+            <button type="submit" class="btn btn-primary w-100">
+                Enregistrer
+            </button>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
