@@ -6,7 +6,19 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    {% if app.user is null %}
+        <a href="{{ path('app_registrationlog_register') }}">Inscription</a>
+        <a href="{{ path('app_registrationlog_connexion') }}">Connexion</a>
+    {% else %}
+        <a href="{{ path('app_registrationlog_logout') }}">Deconnexion</a>
+    {% endif %}
+
         {% block body %}{% endblock %}
+        {% for type, messages in app.session.flashbag.all %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endfor %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
