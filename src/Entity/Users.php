@@ -5,11 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
-class Users
+class Users implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -20,33 +22,48 @@ class Users
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank(message="Le nom est obligatoire")
+     * @Assert\Length(max="50", maxMessage="Le nom ne doit pas faire plus de {{ limit }} caractères")
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank(message="Le prénom est obligatoire")
+     * @Assert\Length(max="50", maxMessage="Le prénom ne doit pas faire plus de {{ limit }} caractères")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank(message="Le pseudo est obligatoire")
+     * @Assert\Length(max="20", maxMessage="Le pseudo ne doit pas faire plus de {{ limit }} caractères")
      */
     private $nickname;
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Assert\NotBlank(message="L'email est obligatoire")
+     * @Assert\Email(message="L'email n'est pas valide")
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le mot de passe est obligatoire")
+     * @Assert\Length(min="8", minMessage="Le mot de passe ne doit pas faire moins de 8 caractères")
+     * @Assert\Regex(
+     *    pattern     = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([\w]{8,20})$/i",
+     *    htmlPattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([\w]{8,20})$",
+     *    message="Le mot de passe doit contenir une majuscule, une minuscule et un chiffre"
+     * )
      */
     private $password;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=20)
      */
-    private $status;
+    private $status = 'ROLE_USER';
 
     /**
      * @ORM\Column(type="datetime")
@@ -70,6 +87,7 @@ class Users
 
     public function __construct()
     {
+        $this->registrationDate = new \DateTime();
         $this->threads = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->prescriptions = new ArrayCollection();
@@ -129,9 +147,9 @@ class Users
         return $this;
     }
 
-    public function getPassword(): ?string
+    public function getPassword(): string
     {
-        return $this->password;
+        return (string)$this->password;
     }
 
     public function setPassword(string $password): self
@@ -141,12 +159,19 @@ class Users
         return $this;
     }
 
-    public function getStatus(): ?int
+    /**
+     * @return string
+     */
+    public function getStatus(): string
     {
         return $this->status;
     }
 
-    public function setStatus(int $status): self
+    /**
+     * @param string $status
+     * @return Users
+     */
+    public function setStatus(string $status): self
     {
         $this->status = $status;
 
@@ -256,5 +281,61 @@ class Users
         }
 
         return $this;
+    }
+
+    /**
+     * Returns the roles granted to the user.
+     *
+     *     public function getRoles()
+     *     {
+     *         return ['ROLE_USER'];
+     *     }
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return (Role|string)[] The user roles
+     * @see UserInterface
+     *
+     */
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+        return [$this->status];
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+        return (string)$this->email;
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
     }
 }

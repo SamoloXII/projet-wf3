@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Inscription</h1>
+
+    {{ form_start(registrationLogForm) }}
+        {{ form_row(registrationLogForm.lastname) }}
+        {{ form_row(registrationLogForm.firstname) }}
+        {{ form_row(registrationLogForm.nickname) }}
+        {{ form_row(registrationLogForm.email) }}
+        {{ form_row(registrationLogForm.password) }}
+        <div class="">
+            <button type="submit">Enregistrer</button>
+        </div>
+
+
+    {{ form_end(registrationLogForm) }}
+
+
+
+{% endblock %}
