@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+
+        <div class="col-md-2 col-sm-6 mt-5">
+            <div class="card border-success mb-3">
+                <div class="card-header bg-transparent border-success">Mes médicaments</div>
+                <!-- Si vide, écrire : Vous n'avez actuellement aucun message à) afficher -->
+                <div class="card-body text-success">
+                    <div class="card">
+                        <div class="card-body">
+                            DOLIPRANE
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            ADVIL
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            SMECTA
+                        </div>
+                    </div>
+
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-md-12 col-sm-6 mt-5">
+                <div class="card mb-5 mt-0 infos-user-main">
+                    <img src="{{ asset('img/profil.svg') }}" alt="">
+                    <div class="card-body infos-user-main-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">Mes informations</p>
+
+                    </div>
+                </div>
+
+
+                <div class="d-flex justify-content-between">
+                    <div class="card card col-5 mb-5 mt-0 liste-medic-main">
+                        <img src="{{ asset('img/message.svg') }}" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <p class="card-text">Mes sujets de discussion</p>
+
+                        </div>
+                    </div>
+                    <div class="card card col-5 mb-5 mt-0 calendrier-main">
+                        <img src="img/calendar.svg" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <p class="card-text">Mon calendrier</p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card card mb-5 mt-0 ordonnance-main">
+                    <img src="img/note.svg" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">Mes ordonnances</p>
+                        <p class="card-text"><a href="#">- Ordonnance angine</a></p>
+                        <p class="card-text"><a href="#">- Ordonnance allergies</a></p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-2 col-sm-6 mt-5 ">
+            <div class="card border-success mb-3">
+                <div class="card-header bg-transparent border-success">Mes messages récents</div>
+                <!-- Si vide, écrire : Vous n'avez actuellement aucun message à) afficher -->
+                <div class="card-body text-success overflow-auto msg-recents">
+                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    <hr>
+                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    <hr>
+                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    <hr>
+                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    <hr>
+                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    <hr>
+                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    <hr>
+                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    <hr>
+                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    <hr>
+
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
