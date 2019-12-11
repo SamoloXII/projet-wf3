@@ -8,12 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
  * Medicaments
  *
  * @ORM\Table(name="medicaments")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\MedicamentsRepository")
  */
 class Medicaments
 {
     /**
-     * @var string
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,91 +21,79 @@ class Medicaments
     private $id;
 
     /**
-     * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
     private $nom;
 
     /**
-     * @var string
      *
      * @ORM\Column(name="type", type="string", length=255, nullable=false)
      */
     private $type;
 
     /**
-     * @var float
      *
      * @ORM\Column(name="prix", type="float", precision=10, scale=0, nullable=false)
      */
     private $prix;
 
     /**
-     * @var string
      *
      * @ORM\Column(name="description_courte", type="string", length=255, nullable=false)
      */
     private $descriptionCourte;
 
     /**
-     * @var string|null
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     *
      */
     private $image;
 
     /**
-     * @var string
      *
      * @ORM\Column(name="substance_active", type="string", length=255, nullable=false)
      */
     private $substanceActive;
 
     /**
-     * @var string|null
      *
      * @ORM\Column(name="dosage_substance", type="string", length=255, nullable=true)
      */
     private $dosageSubstance;
 
     /**
-     * @var string
      *
      * @ORM\Column(name="methode_utilisation", type="string", length=255, nullable=false)
      */
     private $methodeUtilisation;
 
     /**
-     * @var int|null
      *
      * @ORM\Column(name="taux_remboursement", type="integer", nullable=true)
      */
     private $tauxRemboursement;
 
     /**
-     * @var string
      *
      * @ORM\Column(name="symptomes", type="text", length=65535, nullable=false)
      */
     private $symptomes;
 
     /**
-     * @var string
      *
      * @ORM\Column(name="contre_indications", type="text", length=65535, nullable=false)
      */
     private $contreIndications;
 
     /**
-     * @var string
      *
      * @ORM\Column(name="effets_indesirables", type="text", length=65535, nullable=false)
      */
     private $effetsIndesirables;
 
     /**
-     * @var string
      *
      * @ORM\Column(name="conservation", type="text", length=65535, nullable=false)
      */
@@ -196,7 +183,7 @@ class Medicaments
     /**
      * @return string|null
      */
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->image;
     }
@@ -205,7 +192,7 @@ class Medicaments
      * @param string|null $image
      * @return Medicaments
      */
-    public function setImage(?string $image): Medicaments
+    public function setImage($image): Medicaments
     {
         $this->image = $image;
         return $this;
