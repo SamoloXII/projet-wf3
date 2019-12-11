@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AjoutMedicament extends AbstractController
 {
     /**
-     * @Route("/ajoutMed")
+     * @Route("/ajout_med")
      */
     public function index(Request $request)
     {
