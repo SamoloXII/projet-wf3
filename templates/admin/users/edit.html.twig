@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center">Modification membre</h1>
+        <hr>
+        <div class="text-right">
+            <a href="{{ path('app_admin_users_utilisateur') }}" class="btn btn-outline-secondary">
+                Retour
+            </a>
+        </div>
+        {{ form_start(form) }}
+
+        {{ form_row(form.lastname) }}
+        {{ form_row(form.firstname) }}
+        {{ form_row(form.nickname) }}
+        {{ form_row(form.email) }}
+
+
+        <button type="submit" name="modifier" id="modifier" class="btn btn-primary w-100">
+            Modifier
+        </button>
+        {{ form_end(form) }}
+
+
+    </div>
+{% endblock %}
+
