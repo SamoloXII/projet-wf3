@@ -88,7 +88,6 @@ class RegistrationLogController extends AbstractController
      */
     public function logout()
     {
-
-        $this->redirectToRoute('/connexion');
+        
     }
 }

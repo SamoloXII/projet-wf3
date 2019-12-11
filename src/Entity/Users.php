@@ -35,14 +35,14 @@ class Users implements UserInterface
     private $firstname;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, unique=true)
      * @Assert\NotBlank(message="Le pseudo est obligatoire")
      * @Assert\Length(max="20", maxMessage="Le pseudo ne doit pas faire plus de {{ limit }} caractères")
      */
     private $nickname;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string", length=60, unique=true)
      * @Assert\NotBlank(message="L'email est obligatoire")
      * @Assert\Email(message="L'email n'est pas valide")
      */
