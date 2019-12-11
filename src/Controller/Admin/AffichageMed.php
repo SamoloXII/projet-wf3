@@ -28,7 +28,7 @@ class AffichageMed extends AbstractController
     public function index(MedicamentsRepository $repository)
     {
 
-        //Récupération des med en bdd -> 50 affichés max
+        //Récupération des med en bdd
         $medicaments = $repository->findBy([], ['id' => 'ASC'], 50);
 //        echo '<pre>'; var_dump($medicaments); echo '</pre>';
 
@@ -122,6 +122,10 @@ class AffichageMed extends AbstractController
      */
     public function delete(EntityManagerInterface $manager, Medicaments $medicaments)
     {
+        if (!is_null($medicaments->getImage())) {
+            unlink($this->getParameter('upload_dir') . $medicaments->getImage());
+        }
+
         $manager->remove($medicaments);
         $manager->flush();
         $this->addFlash('success','Le médicament a bien été supprimé');
