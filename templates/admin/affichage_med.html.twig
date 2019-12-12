@@ -19,6 +19,7 @@
                     <th>Type</th>
                     <th>Prix</th>
                     <th class="text-center">Taux de<br>remboursement (%)</th>
+                    <th>Voir détails</th>
                     <th>Modifier</th>
                     <th>Supprimer</th>
                 </tr>
@@ -37,12 +38,20 @@
                         <td class="align-middle">{{ medicament.type }}</td>
                         <td class="align-middle">{{ medicament.prix }} €</td>
                         <td class="align-middle text-center">{{ medicament.tauxRemboursement }}</td>
-                        <td><a href="{{ path('app_admin_affichagemed_edit', {"id": medicament.id}) }}"
+                        <td class="align-middle">
+                            <a href="{{ path('app_admin_affichagemed_details', {"id": medicament.id}) }}"
+                                class="btn btn-secondary">
+                                Voir détails
+                            </a>
+                        </td>
+                        <td class="align-middle">
+                            <a href="{{ path('app_admin_affichagemed_edit', {"id": medicament.id}) }}"
                                class="btn btn-primary">
                                 Modifier
                             </a>
                         </td>
-                        <td><a href="{{ path('app_admin_affichagemed_delete', {"id": medicament.id}) }}"
+                        <td class="align-middle">
+                            <a href="{{ path('app_admin_affichagemed_delete', {"id": medicament.id}) }}"
                                class="btn btn-danger">
                                 Supprimer
                             </a>
