@@ -2,13 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\Users;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user", name="user")
+     * @Route("/membre")
      */
     public function index()
     {
@@ -16,4 +20,5 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
+
 }
