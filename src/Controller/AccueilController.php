@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AccueilController extends AbstractController
 {
     /**
-     * @Route("/accueil")
+     * @Route("/")
      */
     public function index()
     {
@@ -22,12 +22,6 @@ class AccueilController extends AbstractController
         return $this->render('accueil/index.html.twig');
     }
 
-    /**
-     * @Route("/message")
-     */
-    public function message(){
-        return $this->render('user/message.html.twig');
-    }
 
     /**
      * @Route("/profil")

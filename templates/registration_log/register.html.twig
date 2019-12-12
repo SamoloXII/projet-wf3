@@ -1,112 +1,115 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
 
-    <h1 class="text-center">Inscription</h1>
-    <p class="text-center">Saisissez vos informations</p>
-    <hr>
+    {% block body %}
+        <div class="container">
+            <h1 class="text-center">Inscription</h1>
+            <p class="text-center">Saisissez vos informations</p>
+            <hr>
 
-{#    {% block error %}#}
-{#        #}{# affichage des messages flash #}
-{#        {% for type, messages in app.session.flashbag.all %}#}
-{#            {% for message in messages %}#}
-{#                #}{# pour la classe alert-danger de bootstrap #}
-{#                {% if (type == 'error') %}#}
-{#                    {% set type ='danger' %}#}
-{#                {% endif %}#}
-{#                <div class="alert alert-{{ type }} mt-2 text-center">#}
-{#                    {{ message|raw }}#}
-{#                </div>#}
-{#            {% endfor %}#}
-{#        {% endfor %}#}
-{#    {% endblock %}#}
+            {#    {% block error %}#}
+            {#        #}{# affichage des messages flash #}
+            {#        {% for type, messages in app.session.flashbag.all %}#}
+            {#            {% for message in messages %}#}
+            {#                #}{# pour la classe alert-danger de bootstrap #}
+            {#                {% if (type == 'error') %}#}
+            {#                    {% set type ='danger' %}#}
+            {#                {% endif %}#}
+            {#                <div class="alert alert-{{ type }} mt-2 text-center">#}
+            {#                    {{ message|raw }}#}
+            {#                </div>#}
+            {#            {% endfor %}#}
+            {#        {% endfor %}#}
+            {#    {% endblock %}#}
 
-    <div class="row">
-        <div class="col-6 mx-auto">
+            <div class="row">
+                <div class="col-6 mx-auto">
 
-            {{ form_start(registrationLogForm) }}
-            {{ form_row(registrationLogForm.lastname) }}
-            {{ form_row(registrationLogForm.firstname) }}
-            {{ form_row(registrationLogForm.nickname) }}
-            {{ form_row(registrationLogForm.email) }}
-            {{ form_row(registrationLogForm.password) }}
-            <div class="">
-                <button type="submit" name="enregistrer" id="enregistrer" class="btn btn-primary w-100">Enregistrer</button>
+                    {{ form_start(registrationLogForm) }}
+                    {{ form_row(registrationLogForm.lastname) }}
+                    {{ form_row(registrationLogForm.firstname) }}
+                    {{ form_row(registrationLogForm.nickname) }}
+                    {{ form_row(registrationLogForm.email) }}
+                    {{ form_row(registrationLogForm.password) }}
+                    <div class="">
+                        <button type="submit" name="enregistrer" id="enregistrer" class="btn btn-primary w-100">
+                            Enregistrer
+                        </button>
+                    </div>
+
+
+                    {{ form_end(registrationLogForm) }}
+                </div>
             </div>
 
+            <!-- The Modal -->
+            {#    <div class="modal fade seminor-login-modal" data-backdrop="static" id="sem-reg">#}
+            {#        <div class="modal-dialog modal-dialog-centered">#}
+            {#            <div class="modal-content">#}
 
-            {{ form_end(registrationLogForm) }}
+            {#                <!-- Modal body -->#}
+            {#                <div class="modal-body seminor-login-modal-body">#}
+            {#                    <h5 class="modal-title text-center">CRÉER UN COMPTE</h5>#}
+            {#                    <button type="button" class="close" data-dismiss="modal">#}
+            {#                        <span><i class="fa fa-times-circle" aria-hidden="true"></i></span>#}
+            {#                    </button>#}
+
+
+            {#                    <form class="seminor-login-form" method="post" action="">#}
+            {#                        <div class="form-group">#}
+            {#                            <input type="text" class="form-control" name="pseudo" autocomplete="off">#}
+            {#                            <label class="form-control-placeholder" for="pseudo" value="">Pseudo</label>#}
+            {#                        </div>#}
+            {#                        <div class="form-group">#}
+            {#                            <input type="text" class="form-control" name="mdp" autocomplete="off">#}
+            {#                            <label class="form-control-placeholder" for="mdp" value="">Mot de passe</label>#}
+            {#                        </div>#}
+            {#                        <!-- <div class="form-group">#}
+            {#                            <input type="text" class="form-control" name="mdp_confirm" autocomplete="off">#}
+            {#                            <label class="form-control-placeholder" for="mdp_confirm" value="">Confirmation du mot de passe</label>#}
+            {#                        </div> -->#}
+            {#                        <div class="form-group">#}
+            {#                            <input type="text" class="form-control" name="nom" autocomplete="off">#}
+            {#                            <label class="form-control-placeholder" for="nom" value="">Nom</label>#}
+            {#                        </div>#}
+            {#                        <div class="form-group">#}
+            {#                            <input type="text" class="form-control" name="prenom" autocomplete="off">#}
+            {#                            <label class="form-control-placeholder" for="prenom" value="">Prénom</label>#}
+            {#                        </div>#}
+            {#                        <div class="form-group">#}
+            {#                            <input type="text" class="form-control" name="tel" autocomplete="off">#}
+            {#                            <label class="form-control-placeholder" for="tel" value="">Téléphone</label>#}
+            {#                        </div>#}
+            {#                        <div class="form-group">#}
+            {#                            <input type="mail" class="form-control" name="mail" autocomplete="off">#}
+            {#                            <label class="form-control-placeholder" for="mail" value="">Email</label>#}
+            {#                        </div>#}
+            {#                        <div class="form-group">#}
+            {#                            <label class="select-form-control-placeholder" for="sexe">Sexe</label>#}
+            {#                            <select class="form-control" id="sexe" name="sexe">#}
+            {#                                <option value="m">Homme</option>#}
+            {#                                <option value="f">Femme</option>#}
+            {#                            </select>#}
+            {#                        </div>#}
+            {#                        <!-- <div class="form-group forgot-pass-fau text-center ">#}
+            {#                            <a href="/terms-conditions/" class="text-secondary">#}
+            {#                                By Clicking "SIGN UP" you accept our<br>#}
+            {#                                <span class="text-primary-fau">Terms and Conditions</span>#}
+            {#                            </a>#}
+            {#                        </div> -->#}
+            {#                        <div class="btn-check-log">#}
+            {#                            <button type="submit" class="btn-check-login">S'INSCRIRE</button>#}
+            {#                        </div>#}
+            {#                        <div class="create-new-fau text-center pt-3">#}
+            {#                            <a href="#" class="text-primary-fau"><span data-toggle="modal" data-target="#sem-login" data-dismiss="modal">Vous possédez déjà un compte ?</span></a>#}
+            {#                        </div>#}
+            {#                    </form>#}
+
+            {#                </div>#}
+            {#            </div>#}
+            {#        </div>#}
+            {#    </div>#}
+
+
         </div>
-    </div>
-
-    <!-- The Modal -->
-    {#    <div class="modal fade seminor-login-modal" data-backdrop="static" id="sem-reg">#}
-    {#        <div class="modal-dialog modal-dialog-centered">#}
-    {#            <div class="modal-content">#}
-
-    {#                <!-- Modal body -->#}
-    {#                <div class="modal-body seminor-login-modal-body">#}
-    {#                    <h5 class="modal-title text-center">CRÉER UN COMPTE</h5>#}
-    {#                    <button type="button" class="close" data-dismiss="modal">#}
-    {#                        <span><i class="fa fa-times-circle" aria-hidden="true"></i></span>#}
-    {#                    </button>#}
-
-
-    {#                    <form class="seminor-login-form" method="post" action="">#}
-    {#                        <div class="form-group">#}
-    {#                            <input type="text" class="form-control" name="pseudo" autocomplete="off">#}
-    {#                            <label class="form-control-placeholder" for="pseudo" value="">Pseudo</label>#}
-    {#                        </div>#}
-    {#                        <div class="form-group">#}
-    {#                            <input type="text" class="form-control" name="mdp" autocomplete="off">#}
-    {#                            <label class="form-control-placeholder" for="mdp" value="">Mot de passe</label>#}
-    {#                        </div>#}
-    {#                        <!-- <div class="form-group">#}
-    {#                            <input type="text" class="form-control" name="mdp_confirm" autocomplete="off">#}
-    {#                            <label class="form-control-placeholder" for="mdp_confirm" value="">Confirmation du mot de passe</label>#}
-    {#                        </div> -->#}
-    {#                        <div class="form-group">#}
-    {#                            <input type="text" class="form-control" name="nom" autocomplete="off">#}
-    {#                            <label class="form-control-placeholder" for="nom" value="">Nom</label>#}
-    {#                        </div>#}
-    {#                        <div class="form-group">#}
-    {#                            <input type="text" class="form-control" name="prenom" autocomplete="off">#}
-    {#                            <label class="form-control-placeholder" for="prenom" value="">Prénom</label>#}
-    {#                        </div>#}
-    {#                        <div class="form-group">#}
-    {#                            <input type="text" class="form-control" name="tel" autocomplete="off">#}
-    {#                            <label class="form-control-placeholder" for="tel" value="">Téléphone</label>#}
-    {#                        </div>#}
-    {#                        <div class="form-group">#}
-    {#                            <input type="mail" class="form-control" name="mail" autocomplete="off">#}
-    {#                            <label class="form-control-placeholder" for="mail" value="">Email</label>#}
-    {#                        </div>#}
-    {#                        <div class="form-group">#}
-    {#                            <label class="select-form-control-placeholder" for="sexe">Sexe</label>#}
-    {#                            <select class="form-control" id="sexe" name="sexe">#}
-    {#                                <option value="m">Homme</option>#}
-    {#                                <option value="f">Femme</option>#}
-    {#                            </select>#}
-    {#                        </div>#}
-    {#                        <!-- <div class="form-group forgot-pass-fau text-center ">#}
-    {#                            <a href="/terms-conditions/" class="text-secondary">#}
-    {#                                By Clicking "SIGN UP" you accept our<br>#}
-    {#                                <span class="text-primary-fau">Terms and Conditions</span>#}
-    {#                            </a>#}
-    {#                        </div> -->#}
-    {#                        <div class="btn-check-log">#}
-    {#                            <button type="submit" class="btn-check-login">S'INSCRIRE</button>#}
-    {#                        </div>#}
-    {#                        <div class="create-new-fau text-center pt-3">#}
-    {#                            <a href="#" class="text-primary-fau"><span data-toggle="modal" data-target="#sem-login" data-dismiss="modal">Vous possédez déjà un compte ?</span></a>#}
-    {#                        </div>#}
-    {#                    </form>#}
-
-    {#                </div>#}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </div>#}
-
-
-
-{% endblock %}
+    {% endblock %}
