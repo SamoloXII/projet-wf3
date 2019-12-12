@@ -16,14 +16,6 @@ class RegistrationLogController extends AbstractController
 {
 
     /**
-     * @Route("/")
-     */
-//    public function index()
-//    {
-//
-//    }
-
-    /**
      * @Route("/registration")
      */
     public function register(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder): Response

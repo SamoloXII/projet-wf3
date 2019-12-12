@@ -4,10 +4,11 @@
     <div class="container">
         <h1 class="text-center">Modification membre</h1>
         <hr>
-        <div class="text-right">
-            <a href="{{ path('app_admin_users_utilisateur') }}" class="btn btn-outline-secondary">
+        <div class="mb-2">
+            <a href="{{ path('app_admin_users_utilisateur') }}" class="btn btn-secondary col-2">
                 Retour
             </a>
+            <br>
         </div>
         {{ form_start(form) }}
 
@@ -15,6 +16,7 @@
         {{ form_row(form.firstname) }}
         {{ form_row(form.nickname) }}
         {{ form_row(form.email) }}
+        {{ form_row(form.status) }}
 
 
         <button type="submit" name="modifier" id="modifier" class="btn btn-primary w-100">
