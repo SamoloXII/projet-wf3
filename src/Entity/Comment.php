@@ -38,6 +38,11 @@ class Comment
      */
     private $users;
 
+    public function __construct()
+    {
+        $this->publicationDate = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
