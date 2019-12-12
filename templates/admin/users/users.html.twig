@@ -26,7 +26,13 @@
                     <td class="text-center">{{ user.firstname }}</td>
                     <td class="text-center">{{ user.nickname }}</td>
                     <td class="text-center">{{ user.email }}</td>
-                    <td class="text-center">{{ user.status }}</td>
+                    <td class="text-center">
+                        {% if user.status == 'ROLE_ADMIN' %}
+                            ADMINISTRATEUR
+                        {% else %}
+                            Utilisateur
+                        {% endif %}
+                    </td>
                     <td class="text-center">{{ user.registrationDate|date('d/m/Y à H:s') }}</td>
                     <td><a href="{{ path('app_admin_users_edit', {"id": user.id}) }}" class="btn btn-primary">Modifier</a></td>
                     <td><a href="{{ path('app_admin_users_delete', {"id": user.id}) }}" class="btn btn-danger">Supprimer</a></td>

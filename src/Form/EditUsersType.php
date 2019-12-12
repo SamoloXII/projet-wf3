@@ -43,8 +43,8 @@ class EditUsersType extends AbstractType
                 [
                     'label' => 'Statut',
                     'choices' => [
-                        'ROLE_USER' => 'Utilisateur',
-                        'ROLE_ADMIN' => 'ADMINISTRATEUR'
+                        'Utilisateur' => 'ROLE_USER',
+                        'Administrateur' => 'ROLE_ADMIN'
                     ]
 
                 ]
