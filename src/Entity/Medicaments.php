@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -98,6 +100,22 @@ class Medicaments
      * @ORM\Column(name="conservation", type="text", length=65535, nullable=false)
      */
     private $conservation;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Prescription", mappedBy="medicaments")
+     */
+    private $prescriptions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Thread", mappedBy="Medicaments")
+     */
+    private $threads;
+
+    public function __construct()
+    {
+        $this->prescriptions = new ArrayCollection();
+        $this->threads = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -339,6 +357,68 @@ class Medicaments
     public function setConservation(string $conservation): Medicaments
     {
         $this->conservation = $conservation;
+        return $this;
+    }
+
+    /**
+     * @return Collection|Prescription[]
+     */
+    public function getPrescriptions(): Collection
+    {
+        return $this->prescriptions;
+    }
+
+    public function addPrescription(Prescription $prescription): self
+    {
+        if (!$this->prescriptions->contains($prescription)) {
+            $this->prescriptions[] = $prescription;
+            $prescription->setMedicaments($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrescription(Prescription $prescription): self
+    {
+        if ($this->prescriptions->contains($prescription)) {
+            $this->prescriptions->removeElement($prescription);
+            // set the owning side to null (unless already changed)
+            if ($prescription->getMedicaments() === $this) {
+                $prescription->setMedicaments(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Thread[]
+     */
+    public function getThreads(): Collection
+    {
+        return $this->threads;
+    }
+
+    public function addThread(Thread $thread): self
+    {
+        if (!$this->threads->contains($thread)) {
+            $this->threads[] = $thread;
+            $thread->setMedicaments($this);
+        }
+
+        return $this;
+    }
+
+    public function removeThread(Thread $thread): self
+    {
+        if ($this->threads->contains($thread)) {
+            $this->threads->removeElement($thread);
+            // set the owning side to null (unless already changed)
+            if ($thread->getMedicaments() === $this) {
+                $thread->setMedicaments(null);
+            }
+        }
+
         return $this;
     }
 
