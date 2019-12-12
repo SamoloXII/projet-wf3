@@ -25,7 +25,7 @@
                 {% for medicament in medicaments %}
                     <tr>
                         <td class="align-middle">{{ medicament.id }}</td>
-                        <td class="text-center">{{ medicament.nom }}</td>
+                        <td class="align-middle text-center">{{ medicament.nom }}</td>
 
                         {% if medicament.image is not null %}
                             <td><img src="{{ asset('img/med/' ~ medicament.image) }}"  alt="{{ medicament.nom }}"></td>
@@ -33,9 +33,9 @@
                             <td></td>
                         {% endif %}
 
-                        <td>{{ medicament.type }}</td>
-                        <td>{{ medicament.prix }} €</td>
-                        <td class="text-center">{{ medicament.tauxRemboursement }}</td>
+                        <td class="align-middle">{{ medicament.type }}</td>
+                        <td class="align-middle">{{ medicament.prix }} €</td>
+                        <td class="align-middle text-center">{{ medicament.tauxRemboursement }}</td>
                         <td><a href="{{ path('app_admin_affichagemed_edit', {"id": medicament.id}) }}"
                                class="btn btn-primary">
                                 Modifier

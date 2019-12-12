@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1 class="text-center">Modifier un médicament</h1>
-
 
     <div class="container">
+        <h1 class="text-center">Modifier un médicament</h1>
 
+        <div class="mb-2" style="padding-left: 15px;">
+            <a href="{{ path('app_admin_affichagemed_index') }}"
+               class="btn btn-secondary col-sm-2">
+                Retour vers la liste des médicaments
+            </a>
+        </div>
         {{ form_start(form) }}
-        <a href="{{ path('app_admin_affichagemed_index') }}"
-           class="btn btn-secondary col-1">
-            Retour
-        </a>
+
         <div class="row mx-auto">
 
             <div class="col-6">
@@ -26,9 +28,16 @@
                     </p>
                 {% endif %}
                 {{ form_row(form.substanceActive) }}
-                {{ form_row(form.dosageSubstance) }}
+                {# S'il n'y a pas d'image laisser dosage à gauche#}
+                {% if original_image is null %}
+                    {{ form_row(form.dosageSubstance) }}
+                {% endif %}
             </div>
             <div class="col-6">
+                {# S'il y a une image passer dosage à droite pour que les 2 colonnes soient de taille égale#}
+                {% if original_image is not null %}
+                    {{ form_row(form.dosageSubstance) }}
+                {% endif %}
                 {{ form_row(form.methodeUtilisation) }}
                 {{ form_row(form.tauxRemboursement) }}
                 {{ form_row(form.symptomes) }}
@@ -37,7 +46,6 @@
                 {{ form_row(form.conservation) }}
             </div>
         </div>
-
 
 
         <div class="col-6 mx-auto">
