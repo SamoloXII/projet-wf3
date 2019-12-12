@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-3 bg-dark m-1 text-light">
+                <h2>{{ medicament.nom }}</h2>
+                <img src="{{ asset('img/med/' ~ image) }}" alt="">
+            </div>
+            <div class="col-4 bg-dark m-1 text-light">
+                <p>Type : {{ medicament.type }}</p>
+                <p>Prix : {{ medicament.prix }}€</p>
+                <p>Substance active : {{ medicament.substanceActive }}</p>
+                <p>Dosage : {{ medicament.dosageSubstance }}</p>
+                <p>Voie d'administration : {{ medicament.methodeUtilisation }}</p>
+            </div>
+            <div class="col bg-dark m-1 text-light">
+                <p>Conservation : {{ medicament.conservation }}</p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col bg-dark m-1 text-light">
+                <p>Cas de préscription : </p>
+                <p> {{ medicament.symptomes|capitalize|nl2br }}</p>
+            </div>
+            <div class="col-5 bg-dark m-1 text-light">
+                <p>Contre indications :</p>
+                <p>{{ medicament.contreIndications|nl2br }}</p>
+            </div>
+            <div class="col bg-dark m-1 text-light">
+                <p>Effets indésirables :</p>
+                <p>{{ medicament.effetsIndesirables }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

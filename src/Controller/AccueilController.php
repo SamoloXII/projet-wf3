@@ -42,13 +42,6 @@ class AccueilController extends AbstractController
     public function calendrier(){
         return $this->render('user/calendrier.html.twig');
     }
-
-    /**
-     * @Route("/medicament")
-     */
-    public function medicament(){
-        return $this->render('user/medicament.html.twig');
-    }
 }
 
 
