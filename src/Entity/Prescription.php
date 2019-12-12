@@ -38,10 +38,11 @@ class Prescription
     private $users;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Medicine", inversedBy="prescriptions")
-     * @ORM\JoinColumn(nullable=false, referencedColumnName="cis", name="medicine_cis")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Medicaments", inversedBy="prescriptions")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $medicine;
+    private $medicaments;
+
 
     public function getId(): ?int
     {
@@ -96,15 +97,16 @@ class Prescription
         return $this;
     }
 
-    public function getMedicine(): ?Medicine
+    public function getMedicaments(): ?Medicaments
     {
-        return $this->medicine;
+        return $this->medicaments;
     }
 
-    public function setMedicine(?Medicine $medicine): self
+    public function setMedicaments(?Medicaments $medicaments): self
     {
-        $this->medicine = $medicine;
+        $this->medicaments = $medicaments;
 
         return $this;
     }
+
 }
