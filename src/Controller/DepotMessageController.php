@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Form\DepotMessageType;
+use App\Repository\MedicamentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,10 +13,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class DepotMessageController extends AbstractController
 {
     /**
-     * @Route("/message")
+     * @Route("/message/{id}")
      */
-    public function index(Request $request, EntityManagerInterface $manager)
+    public function index(Request $request, EntityManagerInterface $manager, MedicamentsRepository $repository, $id)
     {
+        $medicament = $repository->find($id);
+
         $message = new Comment();
         $form = $this->createForm(DepotMessageType::class, $message);
         $form->handleRequest($request);
@@ -35,8 +38,9 @@ class DepotMessageController extends AbstractController
             }
         }
 
-        return $this->render('user/message.html.twig', [
+        return $this->render('depot_message/index.html.twig', [
             'formDepotMessage' => $form->createView(),
+            'medicament' => $medicament
         ]);
     }
 }
