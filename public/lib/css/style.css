@@ -99,3 +99,73 @@
 }*/
 
 
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+body{
+    font-family: ubuntu;
+}
+.user-detail-main{
+    background: #f5f5f5;
+}
+.profile-back{
+    height: 225px;
+    background-image: url('../../img/background-2462434_1920.jpg');
+    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
+}
+.profile-back img{
+    height: 120px;
+    width: 120px;
+    margin-top: 165px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.user-detail{
+    padding-top: 65px;
+}
+.user-detail button{
+    font-size: 12px;
+}
+#accordionMyStory .card-header:hover{
+    cursor: pointer;
+}
+#accordionMyPlan .card-header:hover{
+    cursor: pointer;
+}
+#accordionMyTasks .card-header:hover{
+    cursor: pointer;
+}
+#accordionUserInfo .card-header:hover{
+    cursor: pointer;
+}
+#accordionSocialStatistics .card-header:hover{
+    cursor: pointer;
+}
+#accordionSaleStatistics .card-header:hover{
+    cursor: pointer;
+}
+.card-header h6{
+    display: inline-block;
+}
+.card-header a{
+    cursor: pointer;
+}
+.card-body p{
+    font-size: 14px;
+}
+
+@media (max-width: 640px) {
+    .accordion-group-one{
+        padding-left: 15px !important;
+    }
+    .accordion-group-three{
+        padding-right: 15px !important;
+    }
+}
