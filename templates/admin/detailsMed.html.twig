@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">Details de {{ medicament.nom|capitalize }}</h1>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4 border border-dark border-right-0">
+                {% if image is null %}
+                    <div class="text-center" style="padding-top:50px">
+                        <span>Ce médicament n'a pas d'image associée</span>
+                    </div>
+                {% else %}
+                    <img src="{{ asset('img/med/' ~ image) }}" alt="{{ medicament.nom }}"
+                         style="width: 150px;height: 150px;" >
+                {% endif %}
+            </div>
+            <div class="col-6 pt-2 border border-dark border-right-0 ">
+                <span><b>Type :</b> {{ medicament.type }}</span><br>
+                <span><b>Prix :</b> {{ medicament.prix }}€</span><br>
+                {% if medicament.tauxRemboursement == 0 %}
+                    <span><b>Remboursement :</b> Ce médicament n'est pas remboursé</span><br>
+                {% else %}
+                    <span><b>Remboursement :</b> {{ medicament.tauxRemboursement }}%</span><br>
+                {% endif %}
+                <span><b>Substance active :</b> {{ medicament.substanceActive|capitalize }}
+                    {{ medicament.dosageSubstance|lower }}</span><br>
+
+                {% if medicament.methodeUtilisation == "Ophtalmique" %}
+                    <span><b>Utilisation : </b>{{ medicament.methodeUtilisation|lower }}</span><br>
+                {% else %}
+                    <span><b>Utilisation : </b> voie {{ medicament.methodeUtilisation|lower }}</span><br>
+                {% endif %}
+            </div>
+            <div class="col-2 border border-dark pt-3">
+                <a href="{{ path('app_admin_affichagemed_edit', {'id': medicament.id}) }}"
+                   class="btn btn-secondary w-100">
+                    Modifier
+                </a>
+                <a href="{{ path('app_admin_affichagemed_index', {'id': medicament.id}) }}"
+                   class="btn btn-secondary w-100 mt-3">
+                    Retour à la liste des médicaments
+                </a>
+            </div>
+
+            <div class="col-6 border border-dark border-top-0 border-right-0  ">
+                <h5>Contenu</h5>
+                {{ medicament.descriptionCourte }}
+                <h5>Les contre-indications</h5>
+                {{ medicament.contreIndications|capitalize|nl2br }}
+                <h5>Conseil pour la conservation</h5>
+                {{ medicament.conservation|capitalize }}
+                <h5>Les symptomes :</h5>
+                {{ medicament.symptomes|capitalize }}
+            </div>
+            <div class="col-6 border border-dark border-top-0 ">
+                <h5>Les effets indésirables</h5>
+                {{ medicament.effetsIndesirables|capitalize|nl2br }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+    {% block javascripts %}
+
+    {% endblock %}
+

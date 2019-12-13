@@ -132,4 +132,27 @@ class AffichageMed extends AbstractController
 
         return $this->redirectToRoute('app_admin_affichagemed_index');
     }
+
+    /**
+     * @Route("/details/{id}", requirements={"id":"\d+"})
+     */
+    public function details(MedicamentsRepository $repository, $id)
+    {
+        $medicament = $repository->find($id);
+        $image = $medicament->getImage();
+        //dump($medicament);
+        if(is_null($medicament)){
+
+            return $this->redirectToRoute('app_admin_affichagemed_index');
+        }
+
+        return $this->render(
+            'admin/detailsMed.html.twig',
+            [
+                'medicament' => $medicament,
+                'image' => $image
+            ]
+        );
+    }
+
 }
