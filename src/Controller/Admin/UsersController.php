@@ -34,7 +34,8 @@ class UsersController extends AbstractController
      */
     public function edit(Request $request, EntityManagerInterface $manager, $id)
     {
-        $user = $manager->find(Users::class, $id);
+
+       $user = $manager->find(Users::class, $id);
 
         if (is_null($user)) {
             throw new NotFoundHttpException();
