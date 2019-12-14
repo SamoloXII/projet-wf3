@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class="text-center">Modifier un médicament</h1>
+
+        <div class="mb-2" style="padding-left: 15px;">
+            <a href="{{ path('app_admin_affichagemed_index') }}"
+               class="btn btn-secondary col-sm-2">
+                Retour vers la liste des médicaments
+            </a>
+        </div>
+        {{ form_start(form) }}
+
+        <div class="row mx-auto">
+
+            <div class="col-6">
+                {{ form_row(form.nom) }}
+                {{ form_row(form.type) }}
+                {{ form_row(form.prix) }}
+                {{ form_row(form.descriptionCourte) }}
+                {{ form_row(form.image) }}
+                {% if original_image is not null %}
+                    <p>
+                        Actuellement:
+                        <img src="{{ asset('img/med/' ~ original_image) }}" alt="" height="200px">
+                    </p>
+                {% endif %}
+                {{ form_row(form.substanceActive) }}
+                {# S'il n'y a pas d'image laisser dosage à gauche#}
+                {% if original_image is null %}
+                    {{ form_row(form.dosageSubstance) }}
+                {% endif %}
+            </div>
+            <div class="col-6">
+                {# S'il y a une image passer dosage à droite pour que les 2 colonnes soient de taille égale#}
+                {% if original_image is not null %}
+                    {{ form_row(form.dosageSubstance) }}
+                {% endif %}
+                {{ form_row(form.methodeUtilisation) }}
+                {{ form_row(form.tauxRemboursement) }}
+                {{ form_row(form.symptomes) }}
+                {{ form_row(form.contreIndications) }}
+                {{ form_row(form.effetsIndesirables) }}
+                {{ form_row(form.conservation) }}
+            </div>
+        </div>
+
+
+        <div class="col-6 mx-auto">
+            <button type="submit" class="btn btn-primary w-100">
+                Enregistrer
+            </button>
+
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+    <script>
+        // affichage du fichier dans le champ du formulaire
+        $(document).ready(function () {
+            bsCustomFileInput.init();
+        })
+    </script>
+{% endblock %}
+

@@ -22,12 +22,6 @@ class AccueilController extends AbstractController
         return $this->render('accueil/index.html.twig');
     }
 
-    /**
-     * @Route("/message")
-     */
-    public function message(){
-        return $this->render('user/message.html.twig');
-    }
 
     /**
      * @Route("/profil")
@@ -41,13 +35,6 @@ class AccueilController extends AbstractController
      */
     public function calendrier(){
         return $this->render('user/calendrier.html.twig');
-    }
-
-    /**
-     * @Route("/medicament")
-     */
-    public function medicament(){
-        return $this->render('user/medicament.html.twig');
     }
 }
 

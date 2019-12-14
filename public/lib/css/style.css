@@ -7,9 +7,8 @@
     width: 60px;
 }
 
-img{
-    height: 100px;
-    width: 100px;
+.icard {
+    font-size: 4em;
     padding: 10px;
     display: block;
     margin-left: auto;
@@ -17,10 +16,11 @@ img{
     color: white;
 }
 
-
-body{
-    background-color: #f8f6eb;
-}
+/*body {
+    background-image: url("../../img/Blur-5.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}*/
 
 .logo{
     padding: 0;
@@ -53,4 +53,119 @@ body{
     background-image: url(../img/pills2.jpg) rgb(255, 0, 85);
 
 }
+/*------------------------------------- Cards du tableau de bord user ------------------------------------------------*/
+.user-card{
+    border-radius: unset;
+    box-shadow: unset;
+    border: unset;
+    text-align: center;
+    color: white;
+}
+.c1{
+    background-image: linear-gradient(to left, #5ede9f, #52c4a7);
+    background-color: transparent;
+}
+.c2{
+    background-image: linear-gradient(to left, #fbbf89, #f3787a);
+}
+.c3{
+    background-image: linear-gradient(to left, #30cad9, #05a6d3);
+}
+.c4{
+    background-image: linear-gradient(to left, #e0bbd4, #D939CD);
+}
+/*--------------------------- Hover des cards du tableau de bord user ------------------------------------------------*/
+.c1:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to right, #5ede9f, #52c4a7);
+    /*border: 1px solid #308e60;*/
 
+}
+.c2:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to right, #fbbf89, #f3787a);
+}
+.c3:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to right, #30cad9, #05a6d3);
+}
+.c4:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to right, #e0bbd4, #D939CD);
+}
+
+/*.main-nav{
+    background: #f3787a !important;
+}*/
+
+
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+body{
+    font-family: ubuntu;
+}
+.user-detail-main{
+    background: #f5f5f5;
+}
+.profile-back{
+    height: 225px;
+    background-image: url('../../img/background-2462434_1920.jpg');
+    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
+}
+.profile-back img{
+    height: 120px;
+    width: 120px;
+    margin-top: 165px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.user-detail{
+    padding-top: 65px;
+}
+.user-detail button{
+    font-size: 12px;
+}
+#accordionMyStory .card-header:hover{
+    cursor: pointer;
+}
+#accordionMyPlan .card-header:hover{
+    cursor: pointer;
+}
+#accordionMyTasks .card-header:hover{
+    cursor: pointer;
+}
+#accordionUserInfo .card-header:hover{
+    cursor: pointer;
+}
+#accordionSocialStatistics .card-header:hover{
+    cursor: pointer;
+}
+#accordionSaleStatistics .card-header:hover{
+    cursor: pointer;
+}
+.card-header h6{
+    display: inline-block;
+}
+.card-header a{
+    cursor: pointer;
+}
+.card-body p{
+    font-size: 14px;
+}
+
+@media (max-width: 640px) {
+    .accordion-group-one{
+        padding-left: 15px !important;
+    }
+    .accordion-group-three{
+        padding-right: 15px !important;
+    }
+}

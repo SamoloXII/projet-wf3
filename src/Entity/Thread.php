@@ -35,10 +35,11 @@ class Thread
     private $comments;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Medicine", inversedBy="threads")
-     * @ORM\JoinColumn(nullable=false, referencedColumnName="cis", name="medicine_cis")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Medicaments", inversedBy="threads")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $medicine;
+    private $Medicaments;
+
 
     public function __construct()
     {
@@ -105,14 +106,14 @@ class Thread
         return $this;
     }
 
-    public function getMedicine(): ?Medicine
+    public function getMedicaments(): ?Medicaments
     {
-        return $this->medicine;
+        return $this->Medicaments;
     }
 
-    public function setMedicine(?Medicine $medicine): self
+    public function setMedicaments(?Medicaments $Medicaments): self
     {
-        $this->medicine = $medicine;
+        $this->Medicaments = $Medicaments;
 
         return $this;
     }

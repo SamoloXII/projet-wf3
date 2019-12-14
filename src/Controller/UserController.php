@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/membre")
+     * @Route("/user")
      */
     public function index()
     {
@@ -20,5 +20,4 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
-
 }

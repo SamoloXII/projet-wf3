@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 
 
 use App\Entity\Users;
+use App\Form\EditUsersType;
 use App\Form\RegistrationLogType;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -41,7 +42,7 @@ class UsersController extends AbstractController
             throw new NotFoundHttpException();
         }
 
-        $form = $this->createForm(RegistrationLogType::class, $user);
+        $form = $this->createForm(EditUsersType::class, $user);
 
         $form->handleRequest($request);
 
