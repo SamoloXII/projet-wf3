@@ -18,19 +18,7 @@ class MedicamentsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Medicaments::class);
     }
-
-//    public function findEntitiesByString($str)
-//    {
-//        return $this->getEntityManager()
-//            ->createQuery(
-//                'SELECT m
-//                    FROM medicaments m
-//                    WHERE m.nom LIKE :str'
-//            )
-//            ->setParameter('str', '%'.$str.'%')
-//            ->getResult();
-//    }
-
+    
     // /**
     //  * @return Medicaments[] Returns an array of Medicaments objects
     //  */

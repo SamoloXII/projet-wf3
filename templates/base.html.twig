@@ -40,7 +40,11 @@
 {#                            </div>#}
 {#                        </form>#}
 {#                    </a>#}
-                    <input type="text" class="form-control" id="search-medoc" value="" placeholder="Rechercher un médicament">
+{#                    <input type="text" class="form-control typehead" id="search-medoc" name="search-medoc" value="" autocomplete="off" placeholder="Rechercher un médicament">#}
+
+{#                    <div id="the-basics">#}
+{#                        <input class="typeahead" type="text" placeholder="States of USA">#}
+{#                    </div>#}
                 </li>
                 <li class="nav-item">
                     <div id="result-search"></div>
@@ -91,10 +95,14 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-{#    <script src="{{ asset('lib/js/typeahead.bundle.js') }}"></script>#}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.0/jquery.typeahead.min.js"></script>
+
+    <script src="{{ asset('lib/js/typeahead.bundle.js') }}"></script>
     <script src="{{ asset('lib/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/editUsersStatus.js') }}"></script>
     <script src="{{ asset('js/rechercheAjax.js') }}"></script>
+
+
 {% endblock %}
 
 

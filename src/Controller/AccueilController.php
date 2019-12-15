@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\MedicamentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,37 +44,18 @@ class AccueilController extends AbstractController
     }
 
 //    /**
-//     * @param Request $request
-//     * @return Response
 //     * @Route("/search")
 //     */
-//    public function searchMedoc(Request $request)
+//    public function search(MedicamentsRepository $repository)
 //    {
-//        $em = $this->getDoctrine()->getManager();
 //
-//        // POST
-//        $requestString = $request->get('m');
+//        $medicaments = $repository->findBy([], ['id' => 'ASC'], 5);
 //
-//        $posts = $em->getRepository('App:Medicaments')->findEntitiesByString($requestString);
 //
-//        if (!$posts) {
-//
-//            $result['posts']['error'] = "Post no found :(";
-//        } else {
-//            $result['posts']=$this->getRealEntities($posts);
-//        }
-//
-//        return new Response(json_encode($result));
-//
-//    }
-//
-//    public function getRealEntities($posts)
-//    {
-//        foreach ($posts as $post){
-//            $realEntities[$post->getId()] = [$post->getNom()];
-//        }
-//
-//        return $realEntities;
+//        return $this->render('accueil/index.html.twig',
+//            [
+//                'medicaments' => $medicaments
+//            ]);
 //    }
 
 
