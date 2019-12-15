@@ -1,5 +1,102 @@
 {% extends "base.html.twig" %}
 
-{%  block body %}
-<h1>Ceci est la page accueil</h1>
+{% block body %}
+    <h1>Ceci est la page accueil</h1>
+{% endblock %}
+
+
+
+
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+
+
+        {#$(document).ready(function () {#}
+
+
+        {#    var searchRequest = null;#}
+
+        {#    $('#search-medoc').keyup(function () {#}
+
+        {#        var minLength = 1;#}
+        {#        var that = $this;#}
+        {#        var value = $(this).val();#}
+        {#        var entitySelector = $("entitiesNav").html('');#}
+        {#        if (value.length >= minLength) {#}
+        {#            if (searchRequest != null) {#}
+        {#                searchRequest.abort();#}
+        {#                searchRequest = $.ajax({#}
+        {#                    type: "GET",#}
+        {#                    url: "{{ path('app_accueil_searchmedoc') }}",#}
+        {#                    data: {#}
+        {#                        'm': value#}
+        {#                    },#}
+        {#                    dataType: "text",#}
+        {#                    success: function (msg) {#}
+        {#                        if (value === $(that).val()){#}
+        {#                            var result = JSON.parse(msg);#}
+        {#                                $.each(result, function(key, arr){#}
+        {#                                    $.each(arr, function(id, value){#}
+        {#                                        if(key === 'posts'){#}
+        {#                                            if(id !== 'error'){#}
+        {#                                                console.log(value[1]);#}
+        {#                                                entitySelector.append('<li><b>' + value[1] + '</b><a href="{{ path('app_admin_affichagemed_details', {"id": id}) }}"></li>');#}
+        {#                                            }#}
+        {#                                            else{#}
+        {#                                                entitySelector.append('<li class="errorLi">' + value + '</li>');#}
+        {#                                            }#}
+        {#                                        }#}
+        {#                                    })#}
+        {#                                })#}
+        {#                        }#}
+        {#                    }#}
+        {#                })#}
+        {#            }#}
+        {#        }#}
+
+        {#    })#}
+
+        {#$('#search-medoc').keyup(function () {#}
+
+        {#    var medicament = $(this).val();#}
+
+        {#    if (medicament != "") {#}
+
+        {#        $.ajax({#}
+        {#            type: 'GET',#}
+        {#            url: '{{ path('app_accueil_searchmedoc') }}',#}
+        {#            data: encodeURIComponent(medicament),#}
+        {#            success: function (data) {#}
+
+        {#                if (data != "") {#}
+        {#                    $('#result-search').append(data);#}
+        {#                } else {#}
+        {#                    $('#result-search').innerHTML = "<div>Aucun médicament</div>";#}
+        {#                }#}
+
+
+        {#            }#}
+
+        {#        });#}
+
+
+        {#    }#}
+
+        $('#search-medoc').each(function () {
+            var autocompleteUrl
+        })
+
+
+        })
+        ;
+
+    </script>
+
+
+
 {% endblock %}
