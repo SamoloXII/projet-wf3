@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Medicaments;
 use App\Repository\MedicamentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,20 +44,23 @@ class AccueilController extends AbstractController
         return $this->render('user/calendrier.html.twig');
     }
 
-//    /**
-//     * @Route("/search")
-//     */
-//    public function search(MedicamentsRepository $repository)
-//    {
+    /**
+     * @Route("/ajax/nom")
+     */
+    public function ajaxNom(MedicamentsRepository $repository)
+    {
+//        $medicaments = $repository->findAll();
 //
-//        $medicaments = $repository->findBy([], ['id' => 'ASC'], 5);
-//
+//        dump($medicaments);
 //
 //        return $this->render('accueil/index.html.twig',
 //            [
 //                'medicaments' => $medicaments
-//            ]);
-//    }
+//            ]
+//        );
+
+//        return new Response($medicaments->getNom());
+    }
 
 
 }

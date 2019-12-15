@@ -88,6 +88,13 @@ class Users implements UserInterface
      */
     private $prescriptions;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $resetToken;
+
+
+
     public function __construct()
     {
         $this->registrationDate = new \DateTime();
@@ -160,6 +167,11 @@ class Users implements UserInterface
         $this->password = $password;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->firstname . ' ' . $this->lastname;
     }
 
     /**
@@ -340,5 +352,17 @@ class Users implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
+
+    public function setResetToken(?string $resetToken): self
+    {
+        $this->resetToken = $resetToken;
+
+        return $this;
     }
 }
