@@ -406,6 +406,7 @@ class Medicaments
             $thread->setMedicaments($this);
         }
 
+
         return $this;
     }
 

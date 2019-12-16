@@ -1,7 +1,7 @@
 swiftmailer:
     transport:        gmail
-    username:         ollivier.johan92@gmail.com
-    password:         Testwf32019
+    username:         projet.tokepi@gmail.com
+    password:         Azerty1@
     host:             localhost
     port:             465
     encryption:       ssl
