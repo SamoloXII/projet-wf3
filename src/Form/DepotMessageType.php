@@ -15,11 +15,6 @@ class DepotMessageType extends AbstractType
     {
         $builder
 
-            ->add('thread',
-                TextType::class,[
-                    'label'=> 'Sujet du message'
-                ])
-
             ->add('content',
                 TextareaType::class,[
                     'label' => 'Votre message'

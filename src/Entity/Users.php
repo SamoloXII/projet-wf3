@@ -74,11 +74,6 @@ class Users implements UserInterface
     private $registrationDate;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Thread", mappedBy="users")
-     */
-    private $threads;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="users")
      */
     private $comments;
@@ -205,36 +200,6 @@ class Users implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Thread[]
-     */
-    public function getThreads(): Collection
-    {
-        return $this->threads;
-    }
-
-    public function addThread(Thread $thread): self
-    {
-        if (!$this->threads->contains($thread)) {
-            $this->threads[] = $thread;
-            $thread->setUsers($this);
-        }
-
-        return $this;
-    }
-
-    public function removeThread(Thread $thread): self
-    {
-        if ($this->threads->contains($thread)) {
-            $this->threads->removeElement($thread);
-            // set the owning side to null (unless already changed)
-            if ($thread->getUsers() === $this) {
-                $thread->setUsers(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|Comment[]
