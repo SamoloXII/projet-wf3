@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Users;
 use App\Form\RegistrationLogType;
+use App\Form\ResetPasswordType;
+use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -87,16 +89,18 @@ class RegistrationLogController extends AbstractController
     /**
      * @Route("/oubli-mot-de-passe", name="app_forgotten_password", methods="GET|POST")
      */
-    public function forgottenPassword(Request $request, UserPasswordEncoderInterface $encoder, \Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator): Response
+    public function forgottenPassword(Request $request, UsersRepository $usersRepository, UserPasswordEncoderInterface $encoder, \Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator): Response
     {
+
+        $entityManager = $this->getDoctrine()->getManager();
 
         if ($request->isMethod('POST')) {
 
             $email = $request->request->get('email');
 
-            $entityManager = $this->getDoctrine()->getManager();
 
-            $user = $entityManager->getRepository(Users::class)->findOneBy(['email' => $email]);
+            $user = $usersRepository->findOneBy(['email' => $email]);
+            //$user = $usersRepository->findOneByEmail($email);
 
             if ($user === null) {
                 $this->addFlash('danger', 'Email inconnu, réessayer à nouveau!');
@@ -148,32 +152,48 @@ class RegistrationLogController extends AbstractController
     public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder)
     {
 
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $user = $entityManager->getRepository(Users::class)->findOneByResetToken($token);
+
+        $form = $this->createForm(ResetPasswordType::class, $user);
+        $form->handleRequest($request);
+
+
+        if ($user === null) {
+            $this->addFlash('danger', 'Mot de passe non reconnu');
+            return $this->redirectToRoute('app_accueil_index');
+        }
+
         //Reset avec le mail envoyé
-        if($request->isMethod('POST')){
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
 
-            $entityManager = $this->getDoctrine()->getManager();
+                $user->setResetToken(null);
 
-            $user = $entityManager->getRepository(Users::class)->findOneByResetToken($token);
+//                $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
 
+                $user->setPassword(
+                    $passwordEncoder->encodePassword($user, $user->getPassword())
+                );
 
-            if($user === null){
-                $this->addFlash('danger', 'Mot de passe non reconnu');
-                return $this->redirectToRoute('app_accueil_index');
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+                $this->addFlash('notice', 'Mot de passe mis à jour !');
+
+                return $this->redirectToRoute('app_registrationlog_connexion');
             }
+        } else {
+            $this->addFlash('error', 'Le formulaire contient des erreurs');
 
-            $user->setResetToken(null);
 
-            $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
-
-            $entityManager->flush();
-
-            $this->addFlash('notice', 'Mot de passe mis à jour !');
-
-            return $this->redirectToRoute('app_registrationlog_connexion');
         }
-        else {
-            return $this->render('registration_log/resetPassword.html.twig', ['token' => $token]);
-        }
+
+        return $this->render('registration_log/resetPassword.html.twig',
+            [
+                'nouveauMdp' => $form->createView()
+            ]);
 
     }
 }
