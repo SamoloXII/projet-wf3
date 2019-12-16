@@ -18,7 +18,7 @@ class MedicamentsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Medicaments::class);
     }
-
+    
     // /**
     //  * @return Medicaments[] Returns an array of Medicaments objects
     //  */
