@@ -1,6 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<p>{{ medicament.nom}}</p>
-<p>{{ thread.title}}</p>
+    <h1>{{ medicament.nom }}</h1>
+<div class="container">
+    <div class="list-group col-8">
+        {% for threads in thread %}
+            <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ threads.title }}</h5>
+                    <small>Publié le : {{ threads.registrationDate|date("d/m/Y") }}</small>
+                </div>
+                <p class="mb-1">{{ threads.message }}</p>
+                <small>Auteur : {{ threads.users.nickname }}</small>
+            </a>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

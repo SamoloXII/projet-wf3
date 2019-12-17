@@ -15,7 +15,7 @@ class ThreadsController extends AbstractController
     public function index(MedicamentsRepository $medrepository, $id, ThreadRepository $threadrepository)
     {
         $medicament = $medrepository->find($id);
-        $thread = $threadrepository->find($id);
+        $thread = $threadrepository->findThreadByMedicament($medicament);
 
         return $this->render('threads/index.html.twig', [
             'medicament' => $medicament,
