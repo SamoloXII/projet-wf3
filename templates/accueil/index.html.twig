@@ -1,9 +1,46 @@
 {% extends "base.html.twig" %}
 
-{% block body %}
-    <h1>Ceci est la page accueil</h1>
+{%  block body %}
+    <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
+
+    <div class="jumbotron">
+        <div class="container bg_accueil">
+
+            <h1 class="display-3">Bonjour, bienvenue sur Tokepi !</h1>
+            <p>Le site d'information et d'échange sur les médicaments en distribution.</p>
+            <p>Vous pouvez poster un message concernant un médicament qui vous intéresse en vous connectant
+                <a class="" href="{{ path('app_registrationlog_connexion') }}" role="button">ici &raquo;</a>
+                    ou créer votre profil
+                <a class="" href="{{ path('app_registrationlog_register') }}" role="button">inscription &raquo;</a>
+            </p>
+
+        </div>
+    </div>
 
     <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="{{ asset('img/med_eviter.jpg') }}" alt="medicament à éviter">
+                <h2 class="text-center">Les médicaments à éviter</h2>
+                <p>Tenez-vous au courant des dernières mises à jour concernant les médicaments à éviter.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">En savoir plus &raquo;</a></p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="{{ asset('img/commentaire_accueil.png') }}" alt="image commentaire">
+                <h2>Les commentaires </h2>
+                <p>Vous pouvez consulter les commentaires postés par les membres de notre communauté !</p>
+                <p><a class="btn btn-secondary" href="#" role="button">Voir les commentaires &raquo;</a></p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="{{ asset('img/recherche_accueil.png') }}" alt="image commentaire">
+                <h2>Recherche</h2>
+                <p>Recherchez des informations sur un médicament en particulier !</p>
+                <p><a class="btn btn-secondary" href="#" role="button">Recherche &raquo;</a></p>
+            </div>
+        </div>
+
+        <hr>
 
         <form action="">
             <input class="form-control" id="search-medoc" type="text" name="search-medoc" placeholder="Rechercher un médicament">
