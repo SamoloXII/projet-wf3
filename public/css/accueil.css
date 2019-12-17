@@ -1,0 +1,8 @@
+.jumbotron{
+    background: url("../img/background-2462431_1920.jpg"), 50%;
+    opacity: 0.75;
+}
+
+.jumbotron a{
+    color: #151270;
+}

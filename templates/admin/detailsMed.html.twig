@@ -13,8 +13,10 @@
                         <span>Ce médicament n'a pas d'image associée</span>
                     </div>
                 {% else %}
+                    <div class="text-center">
                     <img src="{{ asset('img/med/' ~ image) }}" alt="{{ medicament.nom }}"
                          style="width: 150px;height: 150px;" >
+                    </div>
                 {% endif %}
             </div>
             <div class="col-6 pt-2 border border-dark border-right-0 ">

@@ -105,27 +105,24 @@
    Author's custom styles
    ========================================================================== */
 
-
-body{
-    font-family: ubuntu;
-}
 .user-detail-main{
     background: #f5f5f5;
 }
 .profile-back{
     height: 225px;
-    background-image: url('../../img/background-2462434_1920.jpg');
+    background-image: url('../../img/color-2174045_1280.png');
     background-size: 100% 100%;
     background-size: cover;
     background-position: center;
 }
 .profile-back img{
-    height: 120px;
-    width: 120px;
-    margin-top: 165px;
+    height: 150px;
+    width: 150px;
+    margin-top: 135px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    border: 3px solid rgba(255, 254, 251, 0.85);
 }
 .user-detail{
     padding-top: 65px;
@@ -153,12 +150,21 @@ body{
 }
 .card-header h6{
     display: inline-block;
+    font-size: 1.5em
+;
 }
 .card-header a{
-    cursor: pointer;
+     cursor: pointer;
+ }
+.card-header:hover{
+    background: rgba(255, 160, 210, 0.2) !important;
 }
 .card-body p{
     font-size: 14px;
+}
+
+.medic-card-contenu{
+    font-size: 1em !important;
 }
 
 @media (max-width: 640px) {
@@ -168,4 +174,43 @@ body{
     .accordion-group-three{
         padding-right: 15px !important;
     }
+}
+
+/*--------------------------- Barre de recherche ------------------------------------------------*/
+#custom-search-form {
+    margin:0;
+    margin-top: 5px;
+    padding: 0;
+}
+
+#custom-search-form .search-query {
+    padding-right: 3px;
+    padding-right: 4px \9;
+    padding-left: 3px;
+    padding-left: 4px \9;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#custom-search-form button {
+    border: 0;
+    background: none;
+    /** belows styles are working good */
+    padding: 2px 5px;
+    margin-top: 2px;
+    position: relative;
+    left: -28px;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.search-query:focus + button {
+    z-index: 3;
 }
