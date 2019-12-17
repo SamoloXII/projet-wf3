@@ -31,7 +31,8 @@
                 <div class="card mb-5 mt-0 infos-user-main bg-success user-card c1">
                     <i class="fas fa-user icard"></i>
                     <div class="card-body infos-user-main-body">
-                        <h5 class="card-title">Mes informations</h5>
+                        <a href="{{ path('app_user_profil', {"id": user.id}) }}">
+                        <h5 class="card-title">Mes informations</h5></a>
                     </div>
                 </div>
 
