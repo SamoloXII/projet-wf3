@@ -161,7 +161,7 @@ class RegistrationLogController extends AbstractController
 
 
         if ($user === null) {
-            $this->addFlash('danger', 'Mot de passe non reconnu');
+//            $this->addFlash('danger', 'Mot de passe non reconnu');
             return $this->redirectToRoute('app_accueil_index');
         }
 
@@ -185,7 +185,7 @@ class RegistrationLogController extends AbstractController
                 return $this->redirectToRoute('app_registrationlog_connexion');
             }
         } else {
-            $this->addFlash('error', 'Le formulaire contient des erreurs');
+//            $this->addFlash('error', 'Le formulaire contient des erreurs');
 
 
         }
