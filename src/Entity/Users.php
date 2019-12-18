@@ -211,8 +211,6 @@ class Users implements UserInterface, \Serializable
         return $this;
     }
 
-
-
     /**
      * @return Collection|Thread[]
      */
@@ -243,6 +241,7 @@ class Users implements UserInterface, \Serializable
 
         return $this;
     }
+
 
     /**
      * @return Collection|Comment[]
