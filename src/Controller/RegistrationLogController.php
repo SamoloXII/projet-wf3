@@ -26,7 +26,7 @@ class RegistrationLogController extends AbstractController
     {
 
         $user = new Users();
-        $form = $this->createForm(RegistrationLogType::class, $user);
+        $form = $this->createForm(RegistrationLogType::class, $user, ['validation_groups' => ['Default', 'registration']]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
@@ -41,7 +41,7 @@ class RegistrationLogController extends AbstractController
 
                 $this->addFlash('success', 'Votre compte est créé');
 
-                return $this->redirectToRoute('app_registrationlog_register');
+                return $this->redirectToRoute('app_registrationlog_connexion');
             } else {
                 $this->addFlash('error', 'Le formulaire contient des erreurs');
             }
@@ -132,7 +132,7 @@ class RegistrationLogController extends AbstractController
 
 
             $message = (new \Swift_Message('Oubli de mot de passe - Réinitialisation'))
-                ->setFrom(array('ollivier.johan92@gmail.com' => 'Tokepi'))
+                ->setFrom(array('projet.tokepi@gmail.com' => 'Tokepi'))
                 ->setTo($user->getEmail())
                 ->setBody(
                     $this->renderView('registration_log/emails/resetPasswordMail.html.twig',
@@ -145,7 +145,7 @@ class RegistrationLogController extends AbstractController
                 );
             $mailer->send($message);
 
-            $this->addFlash('notice', 'Mail envoyé');
+            $this->addFlash('success', 'Mail envoyé');
 
             return $this->redirectToRoute('app_registrationlog_connexion');
         }
@@ -188,14 +188,10 @@ class RegistrationLogController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
 
-                $this->addFlash('notice', 'Mot de passe mis à jour !');
+                $this->addFlash('success', 'Mot de passe mis à jour !');
 
                 return $this->redirectToRoute('app_registrationlog_connexion');
             }
-        } else {
-            $this->addFlash('error', 'Le formulaire contient des erreurs');
-
-
         }
 
         return $this->render('registration_log/resetPassword.html.twig',

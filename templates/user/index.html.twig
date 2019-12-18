@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div class="row mt-5 pt-4 ml-0 mr-0">
 
         <div class="col-md-2 col-sm-6 mt-5">
@@ -29,11 +30,12 @@
         <div class="container">
             <div class="col-md-12 col-sm-6 mt-5">
                 <div class="card mb-5 mt-0 infos-user-main bg-success user-card c1">
+                    <a href="{{ path('app_user_profil') }}" class="btn">
                     <i class="fas fa-user icard"></i>
                     <div class="card-body infos-user-main-body">
-                        <a href="{{ path('app_user_profil') }}">
-                        <h5 class="card-title">Mes informations</h5></a>
-                    </div>
+
+                        <h5 class="card-title text-white">Mes informations</h5>
+                    </div></a>
                 </div>
 
 
