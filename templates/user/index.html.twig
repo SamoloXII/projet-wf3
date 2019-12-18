@@ -23,9 +23,6 @@
                             SMECTA
                         </div>
                     </div>
-
-
-                    </p>
                 </div>
             </div>
         </div>
@@ -34,7 +31,8 @@
                 <div class="card mb-5 mt-0 infos-user-main bg-success user-card c1">
                     <i class="fas fa-user icard"></i>
                     <div class="card-body infos-user-main-body">
-                        <h5 class="card-title">Mes informations</h5>
+                        <a href="{{ path('app_user_profil', {"id": user.id}) }}">
+                        <h5 class="card-title">Mes informations</h5></a>
                     </div>
                 </div>
 
@@ -44,14 +42,12 @@
                         <i class="fas fa-comment-dots icard"></i>
                         <div class="card-body">
                             <h5 class="card-title">Mes sujets de discussion</h5>
-
                         </div>
                     </div>
                     <div class="card card col-5 mb-5 mt-0 calendrier-main bg-danger user-card c3">
                         <i class="fas fa-calendar-alt icard"></i>
                         <div class="card-body">
                             <h5 class="card-title">Mon calendrier</h5>
-
                         </div>
                     </div>
                 </div>
@@ -61,12 +57,9 @@
                     <i class="fas fa-file-medical icard"></i>
                     <div class="card-body">
                         <h5 class="card-title">Mes ordonnances</h5>
-
-
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="col-md-2 col-sm-6 mt-5 ">
@@ -114,12 +107,8 @@
                         card's content.
                         Some quick example text to build on the card title and make up the bulk of the card's content.
                     <hr>
-
-
-                    </p>
                 </div>
             </div>
         </div>
-
     </div>
 {% endblock %}

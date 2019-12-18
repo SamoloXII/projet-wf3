@@ -26,12 +26,14 @@ class DepotMessageController extends AbstractController
         if ($form->isSubmitted()){
             if ($form->isValid()){
 
+                $message->setUsers($this->getUser());
+
                 $manager->persist($message);
                 $manager->flush();
 
                 $this->addFlash('success', 'Vous avez posté un message');
 
-                return $this->redirectToRoute('app_depotmessage_index');
+                return $this->redirectToRoute('app_depotmessage_index', ['id' => $id]);
             }
             else{
                 $this->addFlash('error','Veuillez renseignez un message');

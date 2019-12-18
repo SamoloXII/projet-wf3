@@ -38,7 +38,17 @@ class Thread
      * @ORM\ManyToOne(targetEntity="App\Entity\Medicaments", inversedBy="threads")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Medicaments;
+    private $medicament;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $message;
 
 
     public function __construct()
@@ -106,14 +116,38 @@ class Thread
         return $this;
     }
 
-    public function getMedicaments(): ?Medicaments
+    public function getMedicament(): ?Medicaments
     {
-        return $this->Medicaments;
+        return $this->medicament;
     }
 
-    public function setMedicaments(?Medicaments $Medicaments): self
+    public function setMedicament(?Medicaments $medicament): self
     {
-        $this->Medicaments = $Medicaments;
+        $this->medicament = $medicament;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message): self
+    {
+        $this->message = $message;
 
         return $this;
     }

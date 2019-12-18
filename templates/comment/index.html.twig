@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h2>{{ thread.title }}</h2>
+        <p>{{ thread.message }}</p>
+        <div class="row">
+
+            <div class="col-10 right-header-contentChat">
+                <ul>
+                    {% for comments in comment %}
+                        {% if comments.id % 2 == 1 %}
+
+                            <li>
+                                <div class="rightside-left-chat">
+                                    <span><i class="fa fa-circle" aria-hidden="true"></i> {{ comments.users.nickname }} <small> Publié le :  {{ comments.publicationDate|date("d/m/Y") }} </small> </span><br><br>
+                                    <p>{{ comments.content|nl2br }}</p>
+                                </div>
+                            </li>
+                        {% else %}
+                            <li>
+                                <div class="rightside-right-chat">
+                            <span> <small> Publié le :  {{ comments.publicationDate|date("d/m/Y") }} </small> {{ comments.users.nickname }} <i
+                                        class="fa fa-circle"
+                                        aria-hidden="true"></i></span><br><br>
+                                    <p>{{ comments.content|nl2br }}</p>
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

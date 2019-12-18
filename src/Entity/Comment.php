@@ -27,16 +27,16 @@ class Comment
     private $publicationDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Thread", inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $thread;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $users;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Thread", inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $thread;
 
     public function __construct()
     {
@@ -72,6 +72,18 @@ class Comment
         return $this;
     }
 
+    public function getUsers(): ?Users
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?Users $users): self
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
     public function getThread(): ?Thread
     {
         return $this->thread;
@@ -84,15 +96,5 @@ class Comment
         return $this;
     }
 
-    public function getUsers(): ?Users
-    {
-        return $this->users;
-    }
 
-    public function setUsers(?Users $users): self
-    {
-        $this->users = $users;
-
-        return $this;
-    }
 }
