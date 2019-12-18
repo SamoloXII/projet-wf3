@@ -8,6 +8,7 @@ parameters:
     # %kernel.project_dir = racine du projet
     upload_dir: '%kernel.project_dir%/public/img/med/'
     # pour les images de profil
+    upload_profil: '%kernel.project_dir%/public/img/profil/'
 
 services:
     # default configuration for services in *this* file

@@ -19,6 +19,41 @@
     </div>
 
     <div class="container">
+
+        <form action="">
+            <input class="form-control" id="search-medoc" type="text" name="search-medoc" placeholder="Rechercher un médicament">
+
+{#            <input type="submit">#}
+        </form>
+
+{#        {% for medicament in medicaments %}#}
+{#            <div>{{ medicament.nom }}</div>#}
+{#        {% endfor %}#}
+
+
+    </div>
+
+
+{% endblock %}
+
+
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+
+        $(function () {
+
+            $('#search-medoc').autocomplete({
+                source : '/search-result'
+            });
+
+        });
+
+    </script>
         <!-- Example row of columns -->
         <div class="row">
             <div class="col-md-4 text-center">
