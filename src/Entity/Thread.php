@@ -39,6 +39,18 @@ class Thread
      */
     private $message;
 
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $registrationDate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="threads")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $users;
+
     public function __construct()
     {
         $this->registrationDate = new \DateTime();
@@ -59,6 +71,24 @@ class Thread
     {
         $this->id_thread = $id_thread;
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * @param mixed $users
+     * @return Thread
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
         return $this;
     }
 
@@ -87,6 +117,25 @@ class Thread
 
         return $this;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getRegistrationDate(): \DateTime
+    {
+        return $this->registrationDate;
+    }
+
+    /**
+     * @param \DateTime $registrationDate
+     * @return Thread
+     */
+    public function setRegistrationDate(\DateTime $registrationDate): Thread
+    {
+        $this->registrationDate = $registrationDate;
+        return $this;
+    }
+
 
     public function getPremierMessage(): ?string
     {
