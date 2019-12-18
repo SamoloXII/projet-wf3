@@ -28,6 +28,17 @@ class CommentRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+    public function findCommentByUser($user)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.users = :users')
+            ->orderBy('u.publicationDate', 'DESC')
+        ->setParameter('users', $user)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return Comment[] Returns an array of Comment objects
     //  */

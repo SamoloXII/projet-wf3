@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Medicaments;
+use App\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -29,6 +30,17 @@ class MedicamentsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    public function findMedicamentByUser(Users $user)
+    {
+        return $this->createQueryBuilder('m')
+            ->join('m.prescriptions', 'p')
+            ->andWhere('p.users = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
     // /**

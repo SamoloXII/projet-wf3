@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Users;
 use App\Form\ModifProfilType;
+use App\Repository\CommentRepository;
+use App\Repository\MedicamentsRepository;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,15 +23,20 @@ class UserController extends AbstractController
     /**
      * @Route("/")
      */
-    public function index()
+    public function index(CommentRepository $comRepository, MedicamentsRepository $medRepository)
     {
+        $message = $comRepository->findCommentByUser($this->getUser());
+        $medocs = $medRepository->findMedicamentByUser($this->getUser());
+
         if (is_null($this->getUser())){
             return $this->redirectToRoute('app_registrationlog_connexion');
         }
         $user = $this->getUser();
         return $this->render('user/index.html.twig',
             [
-                'user' => $user
+                'user' => $user,
+                'message' => $message,
+                'medocs' => $medocs
             ]
         );
     }
