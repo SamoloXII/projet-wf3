@@ -72,6 +72,8 @@ class RegistrationLogController extends AbstractController
 
         if (!empty($error)) {
             $this->addFlash('error', 'Identifiants incorrects');
+        } else {
+//            return $this->redirectToRoute('app_user_index');
         }
 //
 
