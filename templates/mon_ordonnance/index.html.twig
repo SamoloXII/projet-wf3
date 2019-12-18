@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon ordonnance{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Mon ordonnance</h1>
+    <hr>
+    <div class="container">
+        <div class="row">
+                <table class="table table-striped table-dark">
+                    <tr>
+                        <th class="text-center align-middle">Medicament</th>
+                        <th class="text-center align-middle">Début du traitement</th>
+                        <th class="text-center align-middle">Durée du traitement</th>
+                        <th class="text-center align-middle">Nombre de prise/jours</th>
+                        <th></th>
+
+                    </tr>
+                    {% for ordonnance in prescription %}
+                        <tr>
+                            <td class="text-center align-middle">{{ ordonnance.medicaments.nom }}</td>
+                            <td class="text-center align-middle">{{ ordonnance.registrationDate|date('d/m/Y') }}</td>
+                            <td class="text-center align-middle">{{ ordonnance.treatmentDuration }} jours</td>
+                            <td class="text-center align-middle">{{ ordonnance.frequency }} fois par jour</td>
+                            <td class="text-center align-middle">
+                                <a href="{{ path('app_monordonnance_index', {"id": ordonnance.id}) }}"
+                                   class="btn btn-danger">
+                                    Supprimer
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+        </div>
+    </div>
+
+
+{% endblock %}
