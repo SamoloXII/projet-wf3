@@ -41,7 +41,7 @@ class RegistrationLogController extends AbstractController
 
                 $this->addFlash('success', 'Votre compte est créé');
 
-                return $this->redirectToRoute('app_registrationlog_register');
+                return $this->redirectToRoute('app_registrationlog_connexion');
             } else {
                 $this->addFlash('error', 'Le formulaire contient des erreurs');
             }
@@ -132,7 +132,7 @@ class RegistrationLogController extends AbstractController
 
 
             $message = (new \Swift_Message('Oubli de mot de passe - Réinitialisation'))
-                ->setFrom(array('ollivier.johan92@gmail.com' => 'Tokepi'))
+                ->setFrom(array('projet.tokepi@gmail.com' => 'Tokepi'))
                 ->setTo($user->getEmail())
                 ->setBody(
                     $this->renderView('registration_log/emails/resetPasswordMail.html.twig',
