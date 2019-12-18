@@ -23,6 +23,9 @@ class UserController extends AbstractController
      */
     public function index()
     {
+        if (is_null($this->getUser())){
+            return $this->redirectToRoute('app_registrationlog_connexion');
+        }
         $user = $this->getUser();
         return $this->render('user/index.html.twig',
             [
