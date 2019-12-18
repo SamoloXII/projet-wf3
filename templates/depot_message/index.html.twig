@@ -5,17 +5,15 @@
     <div class="container">
         <h1 class="text-center">Vos messages</h1>
         <hr>
-
+teub
         <h2 class="text-center">{{ medicament.nom }}</h2>
-
+        <hr>
 
         <div class="row">
             <div class="col-6 mx-auto">
                 {{ form_start(formDepotMessage) }}
 
-                {{ form_row(formDepotMessage.thread) }}
-
-                {{ form_row(formDepotMessage.content,{'attr':{'cols':'50'}})}}
+                {{ form_row(formDepotMessage.content)}}
 
 
                 <div class="col-6 mx-auto">
