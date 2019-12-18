@@ -60,12 +60,15 @@ class RegistrationLogController extends AbstractController
      * @param AuthenticationUtils $authenticationUtils
      * @return Response
      */
-    public function connexion(AuthenticationUtils $authenticationUtils)
+    public function connexion(AuthenticationUtils $authenticationUtils, Request $request)
     {
 
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
+       // $connexion = $user->getId();
+
+//        dump($connexion);
 
         if (!empty($error)) {
             $this->addFlash('error', 'Identifiants incorrects');

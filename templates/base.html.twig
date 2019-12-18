@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="{{ asset('lib/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('lib/css/modal.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
     {% endblock %}
 </head>
 <body>
@@ -16,7 +15,7 @@
 {% if is_granted('ROLE_ADMIN') %}
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ path('app_user_index') }}">
+{#            <a class="navbar-brand" href="{{ path('app_user_index') }}">#}
                 <img class="logo" src="{{ asset('img/tokepi_logo_blanc.png') }}" alt="">
             </a>
             <div class="navbar-collapse">
