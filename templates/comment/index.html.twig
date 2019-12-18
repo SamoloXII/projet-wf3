@@ -2,11 +2,11 @@
 
 {% block body %}
     <div class="container">
-        <h2>{{ thread.title }}</h2>
-        <p>{{ thread.message }}</p>
+        <h2 class="text-center">{{ thread.title }}</h2>
+        <p class="text-center">{{ thread.message }}</p>
         <div class="row">
 
-            <div class="col-10 right-header-contentChat">
+            <div class="col-12 right-header-contentChat">
                 <ul>
                     {% for comments in comment %}
                         {% if comments.id % 2 == 1 %}
