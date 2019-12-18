@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ parent() }} | {{ medicament.nom }}{% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="row">
