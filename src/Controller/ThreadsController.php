@@ -36,7 +36,7 @@ class ThreadsController extends AbstractController
                 $manager->persist($sujet);
                 $manager->flush();
 
-                $this->addFlash('success', 'Vous avez crée un thread');
+                $this->addFlash('success', 'Vous avez créé un nouveau sujet');
 
                 return $this->redirectToRoute('app_threads_index', ['id' => $id]);
             }

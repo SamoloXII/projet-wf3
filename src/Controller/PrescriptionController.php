@@ -29,7 +29,7 @@ class PrescriptionController extends AbstractController
                 $entityManager->persist($prescription);
                 $entityManager->flush();
 
-                $this->addFlash('success','Votre ordonnace a bien été ajouté');
+                $this->addFlash('success','Votre ordonnance a bien été ajoutée');
 
                 return $this->redirectToRoute("app_prescription_index");
             }else{
