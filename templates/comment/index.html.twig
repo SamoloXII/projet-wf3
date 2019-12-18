@@ -47,6 +47,7 @@
                 </ul>
             </div>
         </div>
+        {% if app.user is not null %}
         {{ form_start(formDepotMessage) }}
 
         {{ form_row(formDepotMessage.content)}}
@@ -60,9 +61,8 @@
     </div>
 </div>
 {{ form_end(formDepotMessage) }}
-    </div>
-
-    <div class="row">
-        <div class="col-6 mx-auto">
+    {% else %}
+    <h5><a href="{{ path('app_registrationlog_connexion') }}">Connectez-vous</a> ou <a href="{{ path('app_registrationlog_register') }}">Inscrivez-vous</a> pour participer à la discussion.</h5>
+    {% endif %}
 
 {% endblock %}

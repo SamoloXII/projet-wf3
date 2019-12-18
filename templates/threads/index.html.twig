@@ -33,11 +33,13 @@
                                 <h5 class="mb-1">{{ threads.title }}</h5>
                                 <small>Publié le : {{ threads.registrationDate|date("d/m/Y") }}</small>
                             </div>
+                            <hr>
                             <p class="mb-1">{{ threads.message }}</p>
                             <small>Auteur : {{ threads.users.nickname }}</small>
                         </a>
                     {% endfor %}
                 </div>
+                {% if app.user is not null %}
                 {{ form_start(formDepotThread) }}
 
                 {{ form_row(formDepotThread.title)}}
@@ -53,5 +55,8 @@
         </div>
     </div>
     {{ form_end(formDepotThread) }}
+    {% else %}
+        <h5><a href="{{ path('app_registrationlog_connexion') }}">Connectez-vous</a> ou <a href="{{ path('app_registrationlog_register') }}">Inscrivez-vous</a> pour créer un sujet de discussion.</h5>
+                {% endif %}
 
 {% endblock %}
