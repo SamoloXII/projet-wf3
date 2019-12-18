@@ -73,6 +73,9 @@ class RegistrationLogController extends AbstractController
         if (!empty($error)) {
             $this->addFlash('error', 'Identifiants incorrects');
         }
+//
+
+
 
         return $this->render('registration_log/connexion.html.twig',
             [
