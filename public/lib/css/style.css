@@ -227,12 +227,12 @@
     padding:27px 10px;
     border-bottom:2px solid #000;
 }
-.form-control,.search-icon,.search-icon:hover{
-    background-color: #6A6C75;
-    border:1px solid #fff;
-    color:#fff;
-    box-shadow: none !important;
-}
+/*.form-control,.search-icon,.search-icon:hover{*/
+/*    background-color: #6A6C75;*/
+/*    border:1px solid #fff;*/
+/*    color:#fff;*/
+/*    box-shadow: none !important;*/
+/*}*/
 .form-control:focus{
     border:1px solid #fff;
 }

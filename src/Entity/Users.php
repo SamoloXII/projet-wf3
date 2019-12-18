@@ -210,6 +210,8 @@ class Users implements UserInterface
         return $this;
     }
 
+
+
     /**
      * @return Collection|Thread[]
      */
@@ -371,12 +373,19 @@ class Users implements UserInterface
         return $this;
     }
 
-    public function getImage(): ?string
+    /**
+     * @return string|null
+     */
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    /**
+     * @param string|null $image
+     * @return Users
+     */
+    public function setImage($image): Users
     {
         $this->image = $image;
 

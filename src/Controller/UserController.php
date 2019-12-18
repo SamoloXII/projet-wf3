@@ -19,12 +19,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/{id}")
+     * @Route("/")
      */
-    public function index(UsersRepository $users, $id)
+    public function index()
     {
 
-        $user = $users->find($id);
+        $user = $this->getUser();
+
         return $this->render('user/index.html.twig',
             [
             'user' => $user
@@ -33,20 +34,19 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/profil/{id}", requirements={"id":"\d+"})
+     * @Route("/profil")
      */
-    public function profil($id,
+    public function profil(
                            EntityManagerInterface $manager,
-                           Request $request){
-
-
+                           Request $request)
+    {
         $originalImage = null;
 
-        if (is_null($id)) {
+        if (is_null($this->getUser())) {
 
             return $this->redirectToRoute('app_accueil_index');
         } else {
-            $user = $manager->find(Users::class, $id);
+            $user = $manager->find(Users::class, $this->getUser());
 
             if (is_null($user)){
                 throw New NotFoundHttpException();
@@ -56,7 +56,7 @@ class UserController extends AbstractController
                 $originalImage = $user->getImage();
 
                 $user->setImage(
-                    new File($this->getParameter('upload_dir') . $originalImage)
+                    new File($this->getParameter('upload_profil') . $originalImage)
                 );
             }
         }
@@ -74,13 +74,13 @@ class UserController extends AbstractController
                     $filename = uniqid() . '.' . $image->guessExtension();
 
                     //déplace l'image uploadée vers le répertoire public/img/profil
-                    $image->move($this->getParameter('upload_dir'), $filename);
+                    $image->move($this->getParameter('upload_profil'), $filename);
 
                     $user->setImage($filename);
 
                     //en modif, on supprime l'ancienne image s'il y en a une
                     if (!is_null($originalImage)) {
-                        unlink($this->getParameter('upload_dir') . $originalImage);
+                        unlink($this->getParameter('upload_profil') . $originalImage);
                     }
                 } else {
                     // en modif, sans upload, on sette l'image avec le nom de l'ancienne
@@ -88,13 +88,13 @@ class UserController extends AbstractController
                    $user->setImage($originalImage);
                 }
 
-
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($user);
-                $entityManager->flush();
+                $manager->persist($user);
+                $manager->flush();
 
                 $this->addFlash('success', 'La modification a bien été enregistré');
 
+            } else {
+                $this->addFlash('error', 'La modification n\'a pas été enregistré');
             }
         }
 
