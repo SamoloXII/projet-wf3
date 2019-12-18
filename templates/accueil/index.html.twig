@@ -30,47 +30,11 @@
 
     <script>
 
-        // $(document).ready(function () {
-        //
-        // })
-        // ;
-
         $(function () {
-
-            // $('#search-medoc').keyup(function (e) {
-            //     e.preventDefault();
-            //
-            //      var medoc = $(this).val();
-            //
-            //     console.log(medoc);
-            //
-            //
-            // })
 
             $('#search-medoc').autocomplete({
                 source : '/search-result'
             });
-
-
-
-            // $('#search-medoc').autocomplete({
-            //     source : function(requete, reponse){
-            //         $.ajax({
-            //             url : '/search',
-            //             dataType : 'json',
-            //             data : {
-            //                 name_startsWith : $('#search-medoc').val(),
-            //                 maxRows : 15
-            //             },
-
-                        // success : function(donnee){
-                        //     reponse($.map(donnee.geonames, function(objet){
-                        //         return objet.name + ', ' + objet.countryName;
-                        //     }));
-                        // }
-                    // });
-            //     }
-            // });
 
         });
 
