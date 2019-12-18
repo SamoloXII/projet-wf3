@@ -39,28 +39,29 @@ class UserController extends AbstractController
         Request $request)
     {
 
+        $user = $this->getUser();
         $originalImage = null;
+
         if (is_null($this->getUser())) {
             return $this->redirectToRoute('app_accueil_index');
         } else {
-            $user = $this->getUser();
-            if (is_null($user)) {
-                throw New NotFoundHttpException();
-            }
-            if (!is_null($user->getImage())) {
+
+            if (!empty($user->getImage())) {
                 $originalImage = $user->getImage();
                 $user->setImage(
                     new File($this->getParameter('upload_profil') . $originalImage)
                 );
             }
-            dump($user);
         }
+
         $form = $this->createForm(ModifProfilType::class, $user);
         $form->handleRequest($request);
+
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 /** @var UploadedFile $image */
                 $image = $user->getImage();
+                dump($user);
                 // seulemennt si une image est uploadée
                 if (!is_null($image)) {
                     $filename = uniqid() . '.' . $image->guessExtension();
@@ -78,6 +79,8 @@ class UserController extends AbstractController
                 $manager->persist($user);
                 $manager->flush();
                 $this->addFlash('success', 'La modification a bien été enregistré');
+
+                return $this->redirectToRoute('app_user_index');
 
             } else {
                 $this->addFlash('error', 'La modification n\'a pas été enregistré');
