@@ -6,3 +6,10 @@
 .jumbotron a{
     color: #151270;
 }
+
+.flex{
+    display: flex !important;
+}
+.flex-end{
+    justify-content: flex-end !important;
+}

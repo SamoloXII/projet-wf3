@@ -143,7 +143,7 @@ class RegistrationLogController extends AbstractController
                 );
             $mailer->send($message);
 
-            $this->addFlash('notice', 'Mail envoyé');
+            $this->addFlash('success', 'Mail envoyé');
 
             return $this->redirectToRoute('app_registrationlog_connexion');
         }
@@ -186,14 +186,10 @@ class RegistrationLogController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
 
-                $this->addFlash('notice', 'Mot de passe mis à jour !');
+                $this->addFlash('success', 'Mot de passe mis à jour !');
 
                 return $this->redirectToRoute('app_registrationlog_connexion');
             }
-        } else {
-            $this->addFlash('error', 'Le formulaire contient des erreurs');
-
-
         }
 
         return $this->render('registration_log/resetPassword.html.twig',

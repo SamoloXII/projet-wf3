@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="{{ asset('lib/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('lib/css/modal.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+        <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
     {% endblock %}
 </head>
 <body>
@@ -38,7 +40,6 @@
                     {% if app.user is null %}
                         <li class="nav-item">
                             <a href="{{ path('app_registrationlog_register') }}" class="nav-link">Inscription</a>
-                            {#                        <a href="{{ path('app_registrationlog_register') }}" data-toggle="modal" data-target="#sem-reg">Inscription</a>#}
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('app_registrationlog_connexion') }}" class="nav-link">Connexion</a>
@@ -69,27 +70,18 @@
                     <a href="#" class="nav-link">Profil</a>
                 </li>
                 <li class="nav-item">
-{#                    <a class="nav-link" href="#" >#}
-{#                        <form id="custom-search-form" class="form-search form-horizontal pull-right">#}
-{#                            <div class="input-append span12">#}
-{#                                <input type="text" class="search-query" placeholder="Search">#}
-{#                                <button type="submit" class="btn"><i class="fas fa-search"></i></button>#}
-{#                            </div>#}
-{#                        </form>#}
-{#                    </a>#}
-{#                    <input type="text" class="form-control typehead" id="search-medoc" name="search-medoc" value="" autocomplete="off" placeholder="Rechercher un médicament">#}
-
-{#                    <div id="the-basics">#}
-{#                        <input class="typeahead" type="text" placeholder="States of USA">#}
-{#                    </div>#}
-                </li>
-                <li class="nav-item">
                     <div id="result-search"></div>
                 </li>
+            </ul>
+        </div>
+        <div class="navbar-collapse flex-end">
+            <ul class="navbar-nav">
+                <form action="">
+                    <input class="form-control" id="search-medoc" type="text" name="search-medoc" size="35" autocomplete="off" placeholder="Rechercher un médicament...">
+                </form>
                 {% if app.user is null %}
                     <li class="nav-item">
                         <a href="{{ path('app_registrationlog_register') }}" class="nav-link">Inscription</a>
-                        {#                        <a href="{{ path('app_registrationlog_register') }}" data-toggle="modal" data-target="#sem-reg">Inscription</a>#}
                     </li>
                     <li class="nav-item">
                         <a href="{{ path('app_registrationlog_connexion') }}" class="nav-link">Connexion</a>
@@ -140,6 +132,27 @@
     <script src="{{ asset('lib/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/editUsersStatus.js') }}"></script>
     <script src="{{ asset('js/rechercheAjax.js') }}"></script>
+
+    <script>
+
+        $(function () {
+
+            $('#search-medoc').autocomplete({
+                source : '/search-result',
+                select : function (event, ui) {
+                    $('#search-medoc').val(ui.item.nom);
+                    window.location.href = '/medicpage/' + ui.item.id;
+                }
+            })
+            .autocomplete( "instance" )._renderItem = function( ul, item ) {
+                return $( "<li>" )
+                    .append( item.nom )
+                    .appendTo( ul );
+            };;
+
+        });
+
+    </script>
 
 
 {% endblock %}
