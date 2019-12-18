@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity(fields={"email"}, message="Un compte existe déjà avec cette adresse mail")
  * @UniqueEntity(fields={"nickname"}, message="Le pseudo {{ value }} est déjà utilisé")
  */
-class Users implements UserInterface
+class Users implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -58,7 +58,8 @@ class Users implements UserInterface
      * @Assert\Regex(
      *    pattern     = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([\w]{8,20})$/i",
      *    htmlPattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([\w]{8,20})$",
-     *    message="Le mot de passe doit contenir une majuscule, une minuscule et un chiffre"
+     *    message="Le mot de passe doit contenir une majuscule, une minuscule et un chiffre",
+     *     groups={"registration"}
      * )
      */
     private $password;
@@ -390,5 +391,50 @@ class Users implements UserInterface
         $this->image = $image;
 
         return $this;
+    }
+
+    /**
+     * String representation of object
+     * @link https://php.net/manual/en/serializable.serialize.php
+     * @return string the string representation of the object or null
+     * @since 5.1.0
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->lastname,
+            $this->firstname,
+            $this->nickname,
+            $this->email,
+            $this->password,
+            $this->status,
+            $this->registrationDate
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /**
+     * Constructs the object
+     * @link https://php.net/manual/en/serializable.unserialize.php
+     * @param string $serialized <p>
+     * The string representation of the object.
+     * </p>
+     * @return void
+     * @since 5.1.0
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->lastname,
+            $this->firstname,
+            $this->nickname,
+            $this->email,
+            $this->password,
+            $this->status,
+            $this->registrationDate
+            ) = unserialize($serialized);
     }
 }

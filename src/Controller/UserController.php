@@ -26,36 +26,30 @@ class UserController extends AbstractController
         $user = $this->getUser();
         return $this->render('user/index.html.twig',
             [
-            'user' => $user
+                'user' => $user
             ]
         );
     }
 
     /**
-     * @Route("/profil/{id}", requirements={"id":"\d+"})
+     * @Route("/profil")
      */
-    public function profil($id,
-                           EntityManagerInterface $manager,
-                           Request $request){
+    public function profil(
+        EntityManagerInterface $manager,
+        Request $request)
+    {
 
-
+        $user = $this->getUser();
         $originalImage = null;
 
-        if (is_null($id)) {
-
+        if (is_null($this->getUser())) {
             return $this->redirectToRoute('app_accueil_index');
         } else {
-            $user = $manager->find(Users::class, $id);
 
-            if (is_null($user)){
-                throw New NotFoundHttpException();
-            }
-
-            if(!is_null($user->getImage())){
+            if (!empty($user->getImage())) {
                 $originalImage = $user->getImage();
-
                 $user->setImage(
-                    new File($this->getParameter('upload_dir') . $originalImage)
+                    new File($this->getParameter('upload_profil') . $originalImage)
                 );
             }
         }
@@ -67,44 +61,35 @@ class UserController extends AbstractController
             if ($form->isValid()) {
                 /** @var UploadedFile $image */
                 $image = $user->getImage();
-
                 // seulemennt si une image est uploadée
                 if (!is_null($image)) {
                     $filename = uniqid() . '.' . $image->guessExtension();
-
                     //déplace l'image uploadée vers le répertoire public/img/profil
-                    $image->move($this->getParameter('upload_dir'), $filename);
-
+                    $image->move($this->getParameter('upload_profil'), $filename);
                     $user->setImage($filename);
-
                     //en modif, on supprime l'ancienne image s'il y en a une
                     if (!is_null($originalImage)) {
-                        unlink($this->getParameter('upload_dir') . $originalImage);
+                        unlink($this->getParameter('upload_profil') . $originalImage);
                     }
                 } else {
                     // en modif, sans upload, on sette l'image avec le nom de l'ancienne
-
-                   $user->setImage($originalImage);
+                    $user->setImage($originalImage);
                 }
-
-
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($user);
-                $entityManager->flush();
-
+                $manager->persist($user);
+                $manager->flush();
                 $this->addFlash('success', 'La modification a bien été enregistré');
 
+                return $this->redirectToRoute('app_user_index');
+
+            } else {
+                $this->addFlash('error', 'La modification n\'a pas été enregistré');
             }
         }
-
-
         return $this->render('user/profil.html.twig',
             [
                 'user' => $user,
                 'form' => $form->createView(),
                 'original_image' => $originalImage
-
             ]);
     }
-
 }

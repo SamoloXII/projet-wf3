@@ -14,42 +14,12 @@
                     ou créer votre profil
                 <a class="" href="{{ path('app_registrationlog_register') }}" role="button">inscription &raquo;</a>
             </p>
-
         </div>
+        <hr>
+
     </div>
 
     <div class="container">
-
-
-
-{#        {% for medicament in medicaments %}#}
-{#            <div>{{ medicament.nom }}</div>#}
-{#        {% endfor %}#}
-
-
-    </div>
-
-
-{% endblock %}
-
-
-
-
-{% block javascripts %}
-
-    {{ parent() }}
-
-{#    <script>#}
-
-{#        $(function () {#}
-
-{#            $('#search-medoc').autocomplete({#}
-{#                source : '/search-result'#}
-{#            });#}
-
-{#        });#}
-
-{#    </script>#}
         <!-- Example row of columns -->
         <div class="row">
             <div class="col-md-4 text-center">
@@ -71,10 +41,28 @@
                 <p><a class="btn btn-secondary" href="#" role="button">Recherche &raquo;</a></p>
             </div>
         </div>
-
-        <hr>
-
+    </div>
 
 
+{% endblock %}
+
+
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+
+        $(function () {
+
+            $('#search-medoc').autocomplete({
+                source : '/search-result'
+            });
+
+        });
+
+    </script>
 
 {% endblock %}
