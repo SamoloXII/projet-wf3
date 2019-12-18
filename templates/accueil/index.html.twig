@@ -1,36 +1,40 @@
 {% extends "base.html.twig" %}
 
-{% block body %}
-    <h1>Ceci est la page accueil</h1>
+{%  block body %}
 
-{#        {{ dump(medicaments) }}#}
+    <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
+
+    <div class="jumbotron">
+        <div class="container bg_accueil">
+
+            <h1 class="display-3">Bonjour, bienvenue sur Tokepi !</h1>
+            <p>Le site d'information et d'échange sur les médicaments en distribution.</p>
+            <p>Vous pouvez poster un message concernant un médicament qui vous intéresse en vous connectant
+                <a class="" href="{{ path('app_registrationlog_connexion') }}" role="button">ici &raquo;</a>
+                    ou créer votre profil
+                <a class="" href="{{ path('app_registrationlog_register') }}" role="button">inscription &raquo;</a>
+            </p>
+
+        </div>
+    </div>
 
     <div class="container">
 
-{#                <div id="the-basics">#}
-{#                    <input type="text" class="form-control typehead" id="search-medoc" name="search-medoc" value=""#}
-{#                           autocomplete="off" placeholder="Rechercher un médicament">#}
-{#                </div>#}
-        {#        <div id="contenu"></div>#}
+        <form action="">
+            <input class="form-control" id="search-medoc" type="text" name="search-medoc" placeholder="Rechercher un médicament">
 
-        <div id="the-basics">
-            <input class="form-control typeahead" id="search-medoc" type="text" placeholder="Rechercher un médicament">
-        </div>
+{#            <input type="submit">#}
+        </form>
+
+{#        {% for medicament in medicaments %}#}
+{#            <div>{{ medicament.nom }}</div>#}
+{#        {% endfor %}#}
 
 
     </div>
 
-{#    {% for medicament in medicaments %}#}
-{#        {{ dump(medicament) }}#}
-{#    {% endfor %}#}
-
-
-
-
 
 {% endblock %}
-
-
 
 
 
@@ -41,86 +45,39 @@
 
     <script>
 
-        // $(document).ready(function () {
-        //
-        // })
-        // ;
-
         $(function () {
 
-            {#$('#search-medoc').keyup(function (e) {#}
-            {#    e.preventDefault();#}
+            $('#search-medoc').autocomplete({
+                source : '/search-result'
+            });
 
-            {#    var result = $('#search-medoc').val();#}
-
-            {#    // console.log(result);#}
-
-            {#    #}{#var href = $(this).attr('{{ path('app_accueil_ajaxnom') }}');#}
-
-            {#    var href = '{{ path('app_accueil_ajaxnom') }}';#}
-
-            {#    // console.log(href);#}
-
-            {#    // console.log(response);#}
-
-            {#    $.get(#}
-            {#        href,#}
-            {#        function (response) {#}
-
-            {#            console.log(response);#}
-
-            {#        }#}
-            {#    )#}
-
-            // });
-
-        //     var substringMatcher = function (strs) {
-        //         return function findMatches(q, cb) {
-        //             var matches;
-        //
-        //             // an array that will be populated with substring matches
-        //             matches = [];
-        //
-        //             // regex used to determine if a string contains the substring `q`
-        //             substrRegex = new RegExp(q, 'i');
-        //
-        //             // iterate through the pool of strings and for any string that
-        //             // contains the substring `q`, add it to the `matches` array
-        //             $.each(strs, function (i, str) {
-        //                 if (substrRegex.test(str)) {
-        //                     matches.push(str);
-        //                 }
-        //             });
-        //
-        //             cb(matches);
-        //         };
-        //     };
-        //
-        //     var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-        //         'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-        //         'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-        //         'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-        //         'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-        //         'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-        //         'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-        //         'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-        //         'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-        //     ];
-        //
-        //     $('#the-basics .typeahead').typeahead({
-        //             hint: true,
-        //             highlight: true,
-        //             minLength: 1
-        //         },
-        //         {
-        //             name: 'states',
-        //             source: substringMatcher(states)
-        //         });
-        //
-        //
         });
 
     </script>
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="{{ asset('img/med_eviter.jpg') }}" alt="medicament à éviter">
+                <h2 class="text-center">Les médicaments à éviter</h2>
+                <p>Tenez-vous au courant des dernières mises à jour concernant les médicaments à éviter.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">En savoir plus &raquo;</a></p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="{{ asset('img/commentaire_accueil.png') }}" alt="image commentaire">
+                <h2>Les commentaires </h2>
+                <p>Vous pouvez consulter les commentaires postés par les membres de notre communauté !</p>
+                <p><a class="btn btn-secondary" href="#" role="button">Voir les commentaires &raquo;</a></p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="{{ asset('img/recherche_accueil.png') }}" alt="image commentaire">
+                <h2>Recherche</h2>
+                <p>Recherchez des informations sur un médicament en particulier !</p>
+                <p><a class="btn btn-secondary" href="#" role="button">Recherche &raquo;</a></p>
+            </div>
+        </div>
+
+        <hr>
+
 
 
 

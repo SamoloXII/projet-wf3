@@ -15,14 +15,40 @@ class Thread
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @ORM\ManyToOne(targetEntity="App\Entity\Comment", inversedBy="id_thread")
      */
     private $id;
+
     /**
-     * @var Collection
+     * @ORM\Column(type="datetime")
+     */
+    private $registrationDate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="threads")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $users;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="thread")
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Medicaments", inversedBy="threads")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $medicament;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $message;
 
 
     public function __construct()
@@ -35,64 +61,26 @@ class Thread
         return $this->id;
     }
 
-    public function getIdThread(): ?int
+    public function getRegistrationDate(): ?\DateTimeInterface
     {
-        return $this->id_thread;
+        return $this->registrationDate;
     }
 
-    public function setIdThread(int $id_thread): self
+    public function setRegistrationDate(\DateTimeInterface $registrationDate): self
     {
-        $this->id_thread = $id_thread;
+        $this->registrationDate = $registrationDate;
 
         return $this;
     }
 
-
-
-    public function getIdUser(): ?int
+    public function getUsers(): ?Users
     {
-        return $this->id_user;
+        return $this->users;
     }
 
-    public function setIdUser(int $id_user): self
+    public function setUsers(?Users $users): self
     {
-        $this->id_user = $id_user;
-
-        return $this;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getPremierMessage(): ?string
-    {
-        return $this->premier_message;
-    }
-
-    public function setPremierMessage(string $premier_message): self
-    {
-        $this->premier_message = $premier_message;
-
-        return $this;
-    }
-
-    public function getPublicatioDate(): ?\DateTimeInterface
-    {
-        return $this->publicatio_date;
-    }
-
-    public function setPublicatioDate(\DateTimeInterface $publicatio_date): self
-    {
-        $this->publicatio_date = $publicatio_date;
+        $this->users = $users;
 
         return $this;
     }
@@ -136,6 +124,30 @@ class Thread
     public function setMedicament(?Medicaments $medicament): self
     {
         $this->medicament = $medicament;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message): self
+    {
+        $this->message = $message;
 
         return $this;
     }
