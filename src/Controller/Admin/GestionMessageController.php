@@ -18,6 +18,7 @@ class GestionMessageController extends AbstractController
         //Récupération des comments en bdd
         $comments = $repository->findBy([], ['id' => 'ASC'], 50);
 
+
         return $this->render('admin/gestion_message.html.twig', [
             'comments' => $comments
         ]);

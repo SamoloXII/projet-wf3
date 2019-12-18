@@ -7,19 +7,38 @@
     <div class="container">
 
         {{ form_start(form) }}
-<div>
-    {{ form_row(form.registrationDate) }}
-    {{ form_row(form.treatmentDuration) }}
-    {{ form_row(form.frequency) }}
-    {{ form_row(form.medicaments) }}
-</div>
+        <div>
+            {{ form_row(form.registrationDate) }}
+            {{ form_row(form.treatmentDuration) }}
+            {{ form_row(form.frequency) }}
+            {{ form_row(form.medicaments) }}
+        </div>
 
 
-    <div class="col-6 mx-auto">
-        <button type="submit" class="btn btn-primary w-100">
-            Enregistrer
-        </button>
+        <div class="col-6 mx-auto">
+            <button type="submit" class="btn btn-primary w-100">
+                Enregistrer
+            </button>
+        </div>
+        {{ form_end(form) }}
+
     </div>
-    {{ form_end(form) }}
-    </div>
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        $(function () {
+
+            $('#prescription_medicaments').autocomplete({
+                source: '/search-result'
+            });
+
+        });
+
+    </script>
 {% endblock %}

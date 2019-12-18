@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Prescription;
+use App\Form\DataTransformer\MedicamentToStringTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -11,6 +12,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PrescriptionType extends AbstractType
 {
+    /**
+     * @var MedicamentToStringTransformer
+     */
+    private $transformer;
+
+    public function __construct(MedicamentToStringTransformer $transformer)
+    {
+        $this->transformer = $transformer;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -18,19 +29,19 @@ class PrescriptionType extends AbstractType
                 DateType::class,
                 [
                     'widget' => 'single_text',
-                    'label' => "Date d'enregistrement",
+                    'label' => "Début du traitement",
                 ])
 
             ->add('treatmentDuration',
                 TextType::class,
                 [
-                    'label' => "Durée du traitement",
+                    'label' => "Durée du traitement (jours)",
                 ])
 
             ->add('frequency',
                 TextType::class,
                 [
-                    'label' => "Fréquence"
+                    'label' => "Nombre de fois par jours"
                 ])
 
             ->add('medicaments',
@@ -39,6 +50,8 @@ class PrescriptionType extends AbstractType
                     'label' => 'Médicaments'
                 ])
         ;
+
+        $builder->get('medicaments')->addModelTransformer($this->transformer);
     }
 
     public function configureOptions(OptionsResolver $resolver)
