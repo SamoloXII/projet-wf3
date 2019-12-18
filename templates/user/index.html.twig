@@ -56,6 +56,10 @@
                         <h5 class="card-title">Mes ordonnances</h5>
                     </div>
                 </div>
+                {% for prescription in prescriptions %}
+                    <p>{{ prescription.id }} {{ prescription.frequency }} {{ prescription.registrationDate|date('d/m/Y') }} {{ prescription.medicaments.nom }}</p>
+                {% endfor %}
+
             </div>
         </div>
 

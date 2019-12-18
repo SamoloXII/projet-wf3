@@ -6,6 +6,7 @@ use App\Entity\Users;
 use App\Form\ModifProfilType;
 use App\Repository\CommentRepository;
 use App\Repository\MedicamentsRepository;
+use App\Repository\PrescriptionRepository;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,10 +24,11 @@ class UserController extends AbstractController
     /**
      * @Route("/")
      */
-    public function index(CommentRepository $comRepository, MedicamentsRepository $medRepository)
+    public function index(CommentRepository $comRepository, MedicamentsRepository $medRepository, PrescriptionRepository $prescriptionRepository)
     {
         $message = $comRepository->findCommentByUser($this->getUser());
         $medocs = $medRepository->findMedicamentByUser($this->getUser());
+        $prescriptions = $prescriptionRepository->findPrescriptionByUser($this->getUser());
 
         if (is_null($this->getUser())){
             return $this->redirectToRoute('app_registrationlog_connexion');
@@ -36,7 +38,9 @@ class UserController extends AbstractController
             [
                 'user' => $user,
                 'message' => $message,
-                'medocs' => $medocs
+                'medocs' => $medocs,
+                'prescriptions' => $prescriptions
+
             ]
         );
     }
