@@ -26,7 +26,7 @@ class RegistrationLogController extends AbstractController
     {
 
         $user = new Users();
-        $form = $this->createForm(RegistrationLogType::class, $user);
+        $form = $this->createForm(RegistrationLogType::class, $user, ['validation_groups' => ['Default', 'registration']]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
