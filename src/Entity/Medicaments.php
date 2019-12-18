@@ -107,11 +107,9 @@ class Medicaments
     private $prescriptions;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Thread", mappedBy="medicament")
+     * @ORM\OneToMany(targetEntity="App\Entity\Thread", mappedBy="Medicaments")
      */
     private $threads;
-
-
 
     public function __construct()
     {
@@ -405,8 +403,9 @@ class Medicaments
     {
         if (!$this->threads->contains($thread)) {
             $this->threads[] = $thread;
-            $thread->setMedicament($this);
+            $thread->setMedicaments($this);
         }
+
 
         return $this;
     }
@@ -416,14 +415,13 @@ class Medicaments
         if ($this->threads->contains($thread)) {
             $this->threads->removeElement($thread);
             // set the owning side to null (unless already changed)
-            if ($thread->getMedicament() === $this) {
-                $thread->setMedicament(null);
+            if ($thread->getMedicaments() === $this) {
+                $thread->setMedicaments(null);
             }
         }
 
         return $this;
     }
-
 
 
 }
