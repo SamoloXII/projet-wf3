@@ -41,6 +41,7 @@ class Thread
 
     public function __construct()
     {
+        $this->registrationDate = new \DateTime();
         $this->comments = new ArrayCollection();
     }
 
@@ -163,5 +164,9 @@ class Thread
         $this->message = $message;
 
         return $this;
+    }
+
+    public function setThread($thread)
+    {
     }
 }

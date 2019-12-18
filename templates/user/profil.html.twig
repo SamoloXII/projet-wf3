@@ -2,8 +2,9 @@
 
 {% block body %}
     <div class="container bootstrap snippet">
+        {{ form_start(form) }}
         <div class="row">
-            <div class="col-sm-10"><h1>{{ user.nickname }}</h1></div>
+            <div class="col-sm-10"><h1>Bonjour {{ user.nickname }}</h1></div>
 
         </div>
 
@@ -11,14 +12,18 @@
 
             <div class="col-sm-3"><!--left col-->
                 <div class="text-center">
-
-                    {{ form_row(form.image) }}
                     {% if original_image is not null %}
                         <p>
-                        <img src="{{ asset('img/profil/' ~ original_image) }}" alt="avatar" height="200px"
-                        class="avatar img-circle img-thumbnail">
+                            <img src="{{ asset('img/profil/' ~ original_image) }}" alt="avatar" height="200px"
+                                 class="img-circle">
                         </p>
+                        {{ form_row(form.image) }}
+                        {% else %}
+                            <p>Vous pouvez ajouter une photo</p>
+                            {{ form_row(form.image) }}
                     {% endif %}
+
+
                 </div>
 
                 <p><small>Inscrit depuis le : {{ user.registrationDate|date('d/m/Y') }}</small></p>
@@ -31,7 +36,7 @@
                 </ul>
 
                 <hr>
-                    {{ form_start(form) }}
+
                     <div class="col-xs-9">
                         {{ form_row(form.firstname) }}
                         {{ form_row(form.lastname) }}
@@ -46,10 +51,11 @@
                     </button>
 
                 </div>
-                {{ form_end(form) }}
+
             </div><!--/tab-content-->
 
         </div><!--/col-9-->
+        {{ form_end(form) }}
     </div><!--/row-->
 {% endblock %}
 {% block javascripts %}

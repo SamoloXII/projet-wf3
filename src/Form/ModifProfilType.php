@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -18,7 +19,8 @@ class ModifProfilType extends AbstractType
             ->add('image',
                 FileType::class,
                 [
-                    'required' => false
+                    'required' => false,
+                    'label' => false
                 ])
             ->add('lastname',
                 TextType::class,
@@ -50,7 +52,7 @@ class ModifProfilType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'data_class' => Users::class
         ]);
     }
 }

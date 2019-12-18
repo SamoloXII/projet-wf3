@@ -1,19 +1,62 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ medicament.nom }}</h1>
-<div class="container">
-    <div class="list-group col-8">
-        {% for threads in thread %}
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{ threads.title }}</h5>
-                    <small>Publié le : {{ threads.registrationDate|date("d/m/Y") }}</small>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12 profile-main mt-4 m-0 p-0">
+                <div class="row">
+                    <div class="col-md-12 col-12 user-detail-main border mb-3 pb-2 rounded">
+                        <div class="row">
+                            <div class="col-md-12 col-12 profile-back">
+                                <img src="{{ asset('img/med/' ~ medicament.image) }}" class="rounded-circle">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-12 user-detail text-center">
+                                <h4 class="m-0"><strong>{{ medicament.nom }}</strong></h4>
+                                <h5>{{ medicament.descriptionCourte }}</h5>
+                                <a href="{{ path('app_medicpage_index', {'id': medicament.id}) }}">
+                                <button class="btn btn-primary btn-lg w-50 border-0"
+                                        style="font-size: 1.5em; background-image: linear-gradient(to bottom, #FF9B22 0%, #FF8C00 100%)">
+                                    Voir la page du médicament
+                                </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="mb-1">{{ threads.message }}</p>
-                <small>Auteur : {{ threads.users.nickname }}</small>
-            </a>
-        {% endfor %}
+
+                <div class="list-group col-12">
+                    {% for threads in thread %}
+                        <a href="{{ path('app_comment_index', {'id': threads.id}) }}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ threads.title }}</h5>
+                                <small>Publié le : {{ threads.registrationDate|date("d/m/Y") }}</small>
+                            </div>
+                            <hr>
+                            <p class="mb-1">{{ threads.message }}</p>
+                            <small>Auteur : {{ threads.users.nickname }}</small>
+                        </a>
+                    {% endfor %}
+                </div>
+                {% if app.user is not null %}
+                {{ form_start(formDepotThread) }}
+
+                {{ form_row(formDepotThread.title)}}
+                {{ form_row(formDepotThread.message)}}
+
+
+                <div class="col-12 mx-auto">
+                    <button type="submit" class="btn btn-primary w-100">
+                        Soumettre
+                    </button>
+            </div>
+            </div>
+        </div>
     </div>
-</div>
+    {{ form_end(formDepotThread) }}
+    {% else %}
+        <h5><a href="{{ path('app_registrationlog_connexion') }}">Connectez-vous</a> ou <a href="{{ path('app_registrationlog_register') }}">Inscrivez-vous</a> pour créer un sujet de discussion.</h5>
+                {% endif %}
+
 {% endblock %}
