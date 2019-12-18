@@ -15,10 +15,14 @@
                             <div class="col-md-12 col-12 user-detail text-center">
                                 <h4 class="m-0"><strong>{{ medicament.nom }}</strong></h4>
                                 <h5>{{ medicament.descriptionCourte }}</h5>
-                                <button class="btn btn-primary btn-lg w-50 border-0"
-                                        style="font-size: 1.5em; background-image: linear-gradient(to bottom, #FF9B22 0%, #FF8C00 100%)">
-                                    Voir les discussions
-                                </button>
+
+                                    <a href="{{ path('app_threads_index', {'id': medicament.id}) }}">
+                                        <button class="btn btn-primary btn-lg w-50 border-0"
+                                                style="font-size: 1.5em; background-image: linear-gradient(to bottom, #FF9B22 0%, #FF8C00 100%)">
+                                            Voir les discussions
+                                        </button>
+                                    </a>
+
                             </div>
                         </div>
                     </div>

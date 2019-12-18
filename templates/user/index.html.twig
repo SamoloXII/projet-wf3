@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div class="row mt-5 pt-4 ml-0 mr-0">
 
         <div class="col-md-2 col-sm-6 mt-5">
@@ -8,31 +9,28 @@
                 <div class="card-header bg-transparent border-success">Mes médicaments</div>
                 <!-- Si vide, écrire : Vous n'avez actuellement aucun message à) afficher -->
                 <div class="card-body text-success p-0">
-                    <div class="card">
-                        <div class="card-body">
-                            DOLIPRANE
+                    {% for medoc in medocs %}
+                        <a href="{{ path('app_medicpage_index',{'id': medoc.id}) }}">
+                        <div class="card">
+                            <div class="card-body">
+                                {{ medoc.nom }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            ADVIL
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            SMECTA
-                        </div>
-                    </div>
+                        </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="col-md-12 col-sm-6 mt-5">
                 <div class="card mb-5 mt-0 infos-user-main bg-success user-card c1">
-                    <i class="fas fa-user icard"></i>
-                    <div class="card-body infos-user-main-body">
-                        <h5 class="card-title">Mes informations</h5>
-                    </div>
+                    <a href="{{ path('app_user_profil') }}" class="btn">
+                        <i class="fas fa-user icard"></i>
+                        <div class="card-body infos-user-main-body">
+
+                            <h5 class="card-title text-white">Mes informations</h5>
+                        </div>
+                    </a>
                 </div>
 
 
@@ -58,6 +56,10 @@
                         <h5 class="card-title">Mes ordonnances</h5>
                     </div>
                 </div>
+                {% for prescription in prescriptions %}
+                    <p>{{ prescription.id }} {{ prescription.frequency }} {{ prescription.registrationDate|date('d/m/Y') }} {{ prescription.medicaments.nom }}</p>
+                {% endfor %}
+
             </div>
         </div>
 
@@ -66,46 +68,16 @@
                 <div class="card-header  border-success text-center bg-dark text-light">Mes messages récents</div>
                 <!-- Si vide, écrire : Vous n'avez actuellement aucun message à) afficher -->
                 <div class="card-body text-success overflow-auto msg-recents">
-                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                    <hr>
-                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                    <hr>
-                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                    <hr>
-                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                    <hr>
-                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                    <hr>
-                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                    <hr>
-                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                    <hr>
-                    <h5 class="card-title">Publié le 25/11/2019 : </h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                    <hr>
+                    {% for messages in message %}
+                        <a href="{{ path('app_comment_index', {'id': messages.thread.id}) }}">
+                            <h5 class="card-title">Dans : {{ messages.thread.title }}</h5>
+                            <h5 class="card-title">Le : {{ messages.publicationDate|date('d/m/Y') }}
+                                à {{ messages.publicationDate|date('H:i') }}</h5>
+                            <p class="card-text">{{ messages.content }}
+                            <hr>
+                        </a>
+                    {% endfor %}
+
                 </div>
             </div>
         </div>

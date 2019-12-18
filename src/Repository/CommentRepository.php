@@ -19,6 +19,26 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
+    public function findCommentByThread($thread)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.thread = :thread')
+            ->setParameter('thread', $thread)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findCommentByUser($user)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.users = :users')
+            ->orderBy('u.publicationDate', 'DESC')
+        ->setParameter('users', $user)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return Comment[] Returns an array of Comment objects
     //  */

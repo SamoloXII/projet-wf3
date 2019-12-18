@@ -45,59 +45,34 @@ class AccueilController extends AbstractController
         return $this->render('user/calendrier.html.twig');
     }
 
-//    /**
-//     * @Route("/ajax/nom")
-//     */
-//    public function ajaxNom(MedicamentsRepository $repository)
-//    {
-////        $medicaments = $repository->findAll();
-////
-////        dump($medicaments);
-////
-////        return $this->render('accueil/index.html.twig',
-////            [
-////                'medicaments' => $medicaments
-////            ]
-////        );
-//
-////        return new Response($medicaments->getNom());
-//    }
-
-//    /**
-//     * @Route("/search")
-//     */
-//    public function search(Request $request, MedicamentsRepository $medicamentsRepository)
-//    {
-//        $medoc = [];
-//
-//
-//        if ($request->query->has('search-medoc')) {
-//            $value = $request->query->get('search-medoc');
-//
-////        if($value != ''){
-//            $medoc = $medicamentsRepository->search($value);
-//        }
-//
-//
-////            dump($medoc); die();
-////        }
-////        else{
-////            $medoc = '';
-////        }
-//
-//
-//
-//        return $this->render('accueil/index.html.twig',
-//            [
-//                'medicaments' => $medoc
-//            ]
-//        );
-//    }
-
     /**
      * @Route("/search-result")
      */
     public function searchResult(Request $request, MedicamentsRepository $medicamentsRepository)
+    {
+        $medoc = [];
+        $response = [];
+
+        if ($request->query->has('term')) {
+            $value = $request->query->get('term');
+
+            $medoc = $medicamentsRepository->search($value);
+
+            foreach ($medoc as $med) {
+                $response[] = [
+                    'id' => $med->getId(),
+                    'nom' => $med->getNom()
+                ];
+            }
+        }
+
+        return new JsonResponse($response);
+    }
+
+    /**
+     * @Route("/search")
+     */
+    public function search(Request $request, MedicamentsRepository $medicamentsRepository)
     {
         $medoc = [];
         $response = [];

@@ -19,6 +19,16 @@ class PrescriptionRepository extends ServiceEntityRepository
         parent::__construct($registry, Prescription::class);
     }
 
+    public function findPrescriptionByUser($prescription)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.users = :users')
+            ->setParameter('users', $prescription)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Prescription[] Returns an array of Prescription objects
     //  */

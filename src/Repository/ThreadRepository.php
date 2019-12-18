@@ -19,6 +19,16 @@ class ThreadRepository extends ServiceEntityRepository
         parent::__construct($registry, Thread::class);
     }
 
+    public function findThreadByMedicament($medicament)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.medicament = :medoc')
+            ->setParameter('medoc', $medicament)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Thread[] Returns an array of Thread objects
     //  */

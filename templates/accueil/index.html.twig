@@ -1,6 +1,7 @@
 {% extends "base.html.twig" %}
 
 {%  block body %}
+
     <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
 
     <div class="jumbotron">
@@ -13,8 +14,9 @@
                     ou créer votre profil
                 <a class="" href="{{ path('app_registrationlog_register') }}" role="button">inscription &raquo;</a>
             </p>
-
         </div>
+        <hr>
+
     </div>
 
     <div class="container">
@@ -39,20 +41,6 @@
                 <p><a class="btn btn-secondary" href="#" role="button">Recherche &raquo;</a></p>
             </div>
         </div>
-
-        <hr>
-
-        <form action="">
-            <input class="form-control" id="search-medoc" type="text" name="search-medoc" placeholder="Rechercher un médicament">
-
-{#            <input type="submit">#}
-        </form>
-
-{#        {% for medicament in medicaments %}#}
-{#            <div>{{ medicament.nom }}</div>#}
-{#        {% endfor %}#}
-
-
     </div>
 
 
@@ -67,52 +55,14 @@
 
     <script>
 
-        // $(document).ready(function () {
-        //
-        // })
-        // ;
-
         $(function () {
-
-            // $('#search-medoc').keyup(function (e) {
-            //     e.preventDefault();
-            //
-            //      var medoc = $(this).val();
-            //
-            //     console.log(medoc);
-            //
-            //
-            // })
 
             $('#search-medoc').autocomplete({
                 source : '/search-result'
             });
 
-
-
-            // $('#search-medoc').autocomplete({
-            //     source : function(requete, reponse){
-            //         $.ajax({
-            //             url : '/search',
-            //             dataType : 'json',
-            //             data : {
-            //                 name_startsWith : $('#search-medoc').val(),
-            //                 maxRows : 15
-            //             },
-
-                        // success : function(donnee){
-                        //     reponse($.map(donnee.geonames, function(objet){
-                        //         return objet.name + ', ' + objet.countryName;
-                        //     }));
-                        // }
-                    // });
-            //     }
-            // });
-
         });
 
     </script>
-
-
 
 {% endblock %}
