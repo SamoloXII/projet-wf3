@@ -13,12 +13,11 @@
                 <div class="text-center">
 
                     {{ form_row(form.image) }}
-                    {% if original_image is not null %}
                         <p>
                         <img src="{{ asset('img/profil/' ~ original_image) }}" alt="avatar" height="200px"
-                        class="avatar img-circle img-thumbnail">
+                        class="img-circle img-thumbnail">
                         </p>
-                    {% endif %}
+
                 </div>
 
                 <p><small>Inscrit depuis le : {{ user.registrationDate|date('d/m/Y') }}</small></p>

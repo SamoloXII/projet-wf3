@@ -18,7 +18,8 @@ class ModifProfilType extends AbstractType
             ->add('image',
                 FileType::class,
                 [
-                    'required' => false
+                    'required' => false,
+                    'mapped' => false
                 ])
             ->add('lastname',
                 TextType::class,

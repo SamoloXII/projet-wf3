@@ -38,11 +38,12 @@ class UserController extends AbstractController
         EntityManagerInterface $manager,
         Request $request)
     {
+
         $originalImage = null;
         if (is_null($this->getUser())) {
             return $this->redirectToRoute('app_accueil_index');
         } else {
-            $user = $manager->find(Users::class, $this->getUser());
+            $user = $this->getUser();
             if (is_null($user)) {
                 throw New NotFoundHttpException();
             }
@@ -52,6 +53,7 @@ class UserController extends AbstractController
                     new File($this->getParameter('upload_profil') . $originalImage)
                 );
             }
+            dump($user);
         }
         $form = $this->createForm(ModifProfilType::class, $user);
         $form->handleRequest($request);
@@ -76,6 +78,7 @@ class UserController extends AbstractController
                 $manager->persist($user);
                 $manager->flush();
                 $this->addFlash('success', 'La modification a bien été enregistré');
+
             } else {
                 $this->addFlash('error', 'La modification n\'a pas été enregistré');
             }

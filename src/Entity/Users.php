@@ -58,7 +58,8 @@ class Users implements UserInterface
      * @Assert\Regex(
      *    pattern     = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([\w]{8,20})$/i",
      *    htmlPattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)([\w]{8,20})$",
-     *    message="Le mot de passe doit contenir une majuscule, une minuscule et un chiffre"
+     *    message="Le mot de passe doit contenir une majuscule, une minuscule et un chiffre",
+     *     groups={"registration"}
      * )
      */
     private $password;
