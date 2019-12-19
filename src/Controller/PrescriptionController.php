@@ -31,7 +31,7 @@ class PrescriptionController extends AbstractController
 
                 $this->addFlash('success','Votre ordonnance a bien été ajoutée');
 
-                return $this->redirectToRoute("app_prescription_index");
+                return $this->redirectToRoute("app_user_index");
             }else{
                 $this->addFlash('error', 'Veuillez renseigner une ordonnance');
             }

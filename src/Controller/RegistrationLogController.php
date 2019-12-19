@@ -91,7 +91,7 @@ class RegistrationLogController extends AbstractController
      */
     public function logout()
     {
-
+        
     }
 
     /**

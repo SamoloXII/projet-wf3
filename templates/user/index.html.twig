@@ -39,7 +39,16 @@
                         </a>
                     </div>
                     <div class="card card col-3 mb-5 mt-0 calendrier-main bg-danger user-card c5 rounded shadow">
+{#                        #}
+                        {% if user.image is not null %}
+                        <p class="mt-3 mb-0">
+                            <img src="{{ asset('img/profil/' ~ user.image) }}" alt="avatar" height="100" width="100"
+                                 class="rounded-circle img-thumbnail ">
+                        </p>
+                        {% else %}
                         <i class="far fa-image icard rounded-circle ikon ikon-5 mt-3"></i>
+                        {% endif %}
+
                         <div class="card-body">
                             <h5 class="card-title">{{ user.nickname }}</h5>
                         </div>
