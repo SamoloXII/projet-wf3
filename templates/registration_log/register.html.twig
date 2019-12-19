@@ -3,7 +3,7 @@
 {% block title %}{{ parent() }} | Inscription{% endblock %}
 
     {% block body %}
-        <div class="container">
+        <div class="container text-light mt-5">
             <h1 class="text-center">Inscription</h1>
             <p class="text-center">Saisissez vos informations</p>
             <hr>
@@ -20,7 +20,7 @@
                     {{ form_row(registrationLogForm.email) }}
                     {{ form_row(registrationLogForm.password) }}
                     <div class="">
-                        <button type="submit" name="enregistrer" id="enregistrer" class="btn btn-primary w-100">
+                        <button type="submit" name="enregistrer" id="enregistrer" class="btn btn-primary w-100 boutonsub">
                             Enregistrer
                         </button>
                     </div>

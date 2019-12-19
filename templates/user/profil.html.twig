@@ -3,13 +3,9 @@
 {% block title %}{{ parent() }} | Profil{% endblock %}
 
 {% block body %}
-    <div class="container bootstrap snippet">
+    <div class="container bootstrap snippet text-light mt-5">
+        <h1>Modifiez vos infos</h1>
         {{ form_start(form) }}
-        <div class="row">
-            <div class="col-sm-10"><h1>Bonjour {{ user.nickname }}</h1></div>
-
-        </div>
-
         <div class="row">
 
             <div class="col-sm-3"><!--left col-->
@@ -33,10 +29,6 @@
             </div><!--/col-3-->
 
             <div class="col-sm-9">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#">Profil</a></li>
-                </ul>
-
                 <hr>
 
                     <div class="col-xs-9">

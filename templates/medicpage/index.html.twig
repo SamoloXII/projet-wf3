@@ -7,20 +7,20 @@
         <div class="row">
             <div class="col-md-12 col-12 profile-main mt-4 m-0 p-0">
                 <div class="row">
-                    <div class="col-md-12 col-12 user-detail-main border mb-3 pb-2 rounded">
-                        <div class="row">
+                    <div class="col-md-12 col-12 user-detail-main border mb-3 pb-2 rounded border-0 shadow">
+                        <div class="row rounded">
                             <div class="col-md-12 col-12 profile-back">
                                 <img src="{{ asset('img/med/' ~ medicament.image) }}" class="rounded-circle">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 col-12 user-detail text-center">
-                                <h4 class="m-0"><strong>{{ medicament.nom }}</strong></h4>
-                                <h5>{{ medicament.descriptionCourte }}</h5>
+                                <h4 class="m-0 text-light"><strong>{{ medicament.nom }}</strong></h4>
+                                <h5 class="text-light">{{ medicament.descriptionCourte }}</h5>
 
                                     <a href="{{ path('app_threads_index', {'id': medicament.id}) }}">
-                                        <button class="btn btn-primary btn-lg w-50 border-0"
-                                                style="font-size: 1.5em; background-image: linear-gradient(to bottom, #FF9B22 0%, #FF8C00 100%)">
+                                        <button class="btn btn-primary btn-lg w-50 border-0 boutonsub"
+                                                style="font-size: 1.5em;">
                                             Voir les discussions
                                         </button>
                                     </a>
@@ -31,19 +31,19 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-12 mt-4 pl-0 accordion-group-one">
-                        <div id="accordionMyStory" class="mb-2">
-                            <div class="card rounded story-card">
+                        <div id="accordionMyStory" class="mb-2 rounded">
+                            <div class="card rounded border-0 shadow">
 
                                 <a class="float-right" data-toggle="collapse" data-target="#collapseEnResume"
                                    aria-expanded="true" aria-controls="collapseEnResume">
-                                    <div class="card-header rounded-0 pt-2 pb-2" id="headingMyStory">
+                                    <div class="card-header rounded-0 pt-2 pb-2 medelem-header text-light" id="headingMyStory">
                                         <h6 class="mb-0">En résumé</h6>
                                     </div>
                                 </a>
-
+                                <hr class="m-0" style="background: #4f5278">
                                 <div id="collapseEnResume" class="collapse show" aria-labelledby="headingMyStory"
                                      data-parent="#accordionMyStory">
-                                    <div class="card-body pt-2 pb-2">
+                                    <div class="card-body medelem-body text-light pt-2 pb-2">
                                         <p class="medic-card-contenu"><strong>Type : </strong>{{ medicament.type }}</p>
                                         <p class="medic-card-contenu"><strong>Voie d'administration : </strong>{{ medicament.methodeUtilisation }}</p>
                                         <p class="medic-card-contenu"><strong>Prix : </strong>{{ medicament.prix }}€</p>
@@ -53,18 +53,18 @@
                             </div>
                         </div>
                         <div id="accordionMyStory" class="mb-2">
-                            <div class="card rounded story-card">
+                            <div class="card rounded story-card border-0 shadow">
 
                                 <a class="float-right" data-toggle="collapse" data-target="#collapseComposition"
                                    aria-expanded="true" aria-controls="collapseComposition">
-                                    <div class="card-header rounded-0 pt-2 pb-2" id="headingMyStory">
+                                    <div class="card-header rounded-0 pt-2 pb-2 medelem-header text-light" id="headingMyStory">
                                         <h6 class="mb-0">Composition</h6>
                                     </div>
                                 </a>
-
+                                <hr class="m-0" style="background: #4f5278">
                                 <div id="collapseComposition" class="collapse show" aria-labelledby="headingMyStory"
                                      data-parent="#accordionMyStory">
-                                    <div class="card-body pt-2 pb-2">
+                                    <div class="card-body medelem-body text-light pt-2 pb-2">
                                         <p class="medic-card-contenu"><strong>Substance active : </strong>{{ medicament.substanceActive }}</p>
                                         <p class="medic-card-contenu"><strong>Dosage : </strong>{{ medicament.dosageSubstance }}</p>
 
@@ -73,18 +73,19 @@
                             </div>
                         </div>
                         <div id="accordionMyStory" class="mb-2">
-                            <div class="card rounded story-card">
+                            <div class="card rounded story-card border-0 shadow">
 
                                 <a class="float-right" data-toggle="collapse" data-target="#collapseConservation"
                                    aria-expanded="true" aria-controls="collapseConservation">
-                                    <div class="card-header rounded-0 pt-2 pb-2" id="headingMyStory">
+                                    <div class="card-header rounded-0 pt-2 pb-2 medelem-header text-light" id="headingMyStory">
                                         <h6 class="mb-0">Conservation</h6>
                                     </div>
                                 </a>
+                                <hr class="m-0" style="background: #4f5278">
 
                                 <div id="collapseConservation" class="collapse show" aria-labelledby="headingMyStory"
                                      data-parent="#accordionMyStory">
-                                    <div class="card-body pt-2 pb-2">
+                                    <div class="card-body medelem-body text-light pt-2 pb-2">
                                         <p class="medic-card-contenu">{{ medicament.conservation|capitalize|nl2br }}</p>
                                     </div>
                                 </div>
@@ -93,56 +94,56 @@
                     </div>
                     <div class="col-md-8 col-12 mt-4 accordion-group-two">
                         <div id="accordionUserInfo" class="mb-2">
-                            <div class="card rounded info-card">
+                            <div class="card rounded info-card border-0 shadow">
 
                                 <a class="float-right" data-toggle="collapse" data-target="#collapseCasDePrescriprion"
                                    aria-expanded="true" aria-controls="collapseCasDePrescriprion">
-                                    <div class="card-header rounded-0 pt-2 pb-2" id="headingUserInfo">
+                                    <div class="card-header rounded-0 pt-2 pb-2 medelem-header text-light" id="headingUserInfo">
                                         <h6 class="mb-0">Cas de prescription</h6>
                                     </div>
                                 </a>
-
+                                <hr class="m-0" style="background: #4f5278">
                                 <div id="collapseCasDePrescriprion" class="collapse show"
                                      aria-labelledby="headingUserInfo"
                                      data-parent="#accordionUserInfo">
-                                    <div class="card-body pt-2 pb-2">
+                                    <div class="card-body medelem-body text-light pt-2 pb-2">
                                         <p class="medic-card-contenu">{{ medicament.symptomes|nl2br }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div id="accordionSaleStatistics" class="mb-2">
-                            <div class="card rounded info-card">
+                            <div class="card rounded info-card border-0 shadow">
 
                                 <a class="float-right" data-toggle="collapse" data-target="#collapseContreIndications"
                                    aria-expanded="true" aria-controls="collapseContreIndications">
-                                    <div class="card-header rounded-0 pt-2 pb-2" id="headingSaleStatistics">
+                                    <div class="card-header rounded-0 pt-2 pb-2 medelem-header text-light" id="headingSaleStatistics">
                                         <h6 class="mb-0">Contre indiqué dans les cas suivants</h6>
                                     </div>
                                 </a>
-
+                                <hr class="m-0" style="background: #4f5278">
                                 <div id="collapseContreIndications" class="collapse show" lass="collapse show"
                                      aria-labelledby="headingSaleStatistics" data-parent="#accordionSaleStatistics">
-                                    <div class="card-body pt-2 pb-2">
+                                    <div class="card-body medelem-body text-light pt-2 pb-2">
                                         <p class="medic-card-contenu">{{ medicament.contreIndications|nl2br }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div id="accordionUserInfo" class="mb-2">
-                            <div class="card rounded info-card">
+                            <div class="card rounded info-card border-0 shadow">
 
                                 <a class="float-right" data-toggle="collapse" data-target="#collapseEffetsIndesirables"
                                    aria-expanded="true" aria-controls="collapseEffetsIndesirables">
-                                    <div class="card-header rounded-0 pt-2 pb-2" id="headingUserInfo">
+                                    <div class="card-header rounded-0 pt-2 pb-2 medelem-header text-light" id="headingUserInfo">
                                         <h6 class="mb-0">Effets indésirables</h6>
                                     </div>
                                 </a>
-
+                                <hr class="m-0" style="background: #4f5278">
                                 <div id="collapseEffetsIndesirables" class="collapse show"
                                      aria-labelledby="headingUserInfo"
                                      data-parent="#accordionUserInfo">
-                                    <div class="card-body pt-2 pb-2">
+                                    <div class="card-body medelem-body text-light pt-2 pb-2">
                                         <p class="medic-card-contenu">{{ medicament.effetsIndesirables|nl2br }}</p>
                                     </div>
                                 </div>

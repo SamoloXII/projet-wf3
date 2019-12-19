@@ -16,11 +16,9 @@
     color: white;
 }
 
-/*body {
-    background-image: url("../../img/Blur-5.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-}*/
+body {
+    background-color: #1e1e2d;
+}
 
 .logo{
     padding: 0;
@@ -62,17 +60,63 @@
     color: white;
 }
 .c1{
-    background-image: linear-gradient(to left, #5ede9f, #52c4a7);
-    background-color: transparent;
+    /*background-image: linear-gradient(to left, #5ede9f, #52c4a7);
+    background-color: transparent;*/
+    background-color: #27293d !important;
 }
 .c2{
-    background-image: linear-gradient(to left, #fbbf89, #f3787a);
+    background-color: #27293d !important;
 }
 .c3{
-    background-image: linear-gradient(to left, #30cad9, #05a6d3);
+    background-color: #27293d !important;
 }
 .c4{
-    background-image: linear-gradient(to left, #e0bbd4, #D939CD);
+    background-color: #27293d !important;
+}
+.c5{
+    background-color: #27293d !important;
+}
+
+.ikon {
+    width: 90px;
+    height: 90px;
+}
+.ikon-1 {
+    background-image: linear-gradient(to left, #fa547f, #f03129);
+}
+.ikon-2 {
+    background-image: linear-gradient(to left, #da4fd2, #c253ec);
+}
+.ikon-3 {
+    background-image: linear-gradient(to left, #01dbc3, #00abe7);
+}
+.ikon-4 {
+    background-image: linear-gradient(to left, #ff8677, #ff6c8b);
+}
+.ikon-5 {
+    background-image: linear-gradient(to left, #0ecaa6, #17d579);
+}
+
+.poulou{
+    height: 180px;
+}
+
+.item-thread{
+    background: #27293d;
+}
+.item-thread hr{
+    background: rgba(116, 118, 174, 0.4);
+}
+.item-thread:hover{
+    background: rgba(39, 41, 61, 0.47);
+}
+
+.boutonsub{
+    background-image: linear-gradient(#0eb490, #17bf66);
+}
+
+.boutonsub:hover{
+    background-image: linear-gradient(#0fdbb1, #17d276);
 }
 /*--------------------------- Hover des cards du tableau de bord user ------------------------------------------------*/
 .c1:hover{
@@ -94,10 +138,28 @@
     background-image: linear-gradient(to right, #e0bbd4, #D939CD);
 }
 
-/*.main-nav{
-    background: #f3787a !important;
-}*/
+.navbar{
+    background-image: linear-gradient(to right, #ff6490, #ff8d72);
+    box-shadow: 0px 15px 10px -10px #151515 !important;
+}
 
+.medoc-gauche{
+    background-color: #27293d !important;
+    color: white;
+}
+.liste-gauche{
+    background-color: #27293d!important;
+    text-decoration: none !important;
+}
+.liste-droite{
+    background-color: #27293d!important;
+    text-decoration: none !important;
+}
+.liste-gauche:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to right, #30cad9, #05a6d3);
+    text-decoration: none !important;
+}
 
 
 
@@ -106,7 +168,7 @@
    ========================================================================== */
 
 .user-detail-main{
-    background: #f5f5f5;
+    background: #27293d;
 }
 .profile-back{
     height: 225px;
@@ -122,7 +184,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border: 3px solid rgba(255, 254, 251, 0.85);
+    border: 5px solid #27293d;
 }
 .user-detail{
     padding-top: 65px;
@@ -156,7 +218,15 @@
 .card-header a{
      cursor: pointer;
  }
-.card-header:hover{
+.medelem-header{
+    background: #27293d !important;
+}
+
+.medelem-body{
+    background: #27293d !important;
+}
+
+.medelem-header:hover{
     background: rgba(255, 160, 210, 0.2) !important;
 }
 .card-body p{
@@ -321,7 +391,7 @@
 .right-header-contentChat{
     height: 500px;
     overflow: auto;
-    background-color: #FFFFFF;
+    background-color: transparent;
     position: relative;
 }
 .right-header-contentChat ul li{
@@ -329,14 +399,21 @@
     margin-top:20px;
 }
 .right-header-contentChat .rightside-left-chat p,.right-header-contentChat .rightside-right-chat p{
-    background-color: #86BB71;
+    /*background-color: #86BB71;*/
+    background-image: linear-gradient(#a5e290, #86BB71);
     padding:15px;
     border-radius:8px;
     color:#fff;
 }
 .right-header-contentChat .rightside-right-chat p{
-    background-color: #94C2ED;
+    /*background-color: #94C2ED;*/
+    background-image: linear-gradient(#a0d1ff, #79a6d0);
 }
+
+.admin-msg{
+    background-image: linear-gradient(#ff7479, #d04a55) !important;
+}
+
 .right-chat-textbox{
     padding: 15px 30px;
     width: 100%;

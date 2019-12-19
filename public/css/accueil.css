@@ -13,3 +13,15 @@
 .flex-end{
     justify-content: flex-end !important;
 }
+
+.titre-accueil{
+    color: #00fbff;
+}
+
+.accroche-accueil{
+    color: #dfdee0;
+}
+
+.accueil-diapo-label{
+    background: rgba(0, 0, 0, 0.79);
+}

@@ -17,7 +17,7 @@ class DepotMessageType extends AbstractType
 
             ->add('content',
                 TextareaType::class,[
-                    'label' => 'Votre message'
+                    'label' => 'Votre message :'
                 ])
 
         ;

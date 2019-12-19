@@ -6,18 +6,20 @@
 
     <div class="row mt-5 pt-4 ml-0 mr-0">
 
-        <div class="col-md-2 col-sm-6 mt-5">
-            <div class="card border-success mb-3">
-                <div class="card-header bg-transparent border-success">Mes médicaments</div>
+        <div class="col-md-2 col-sm-6 mt-5 ">
+            <div class="card border-0 mb-3 medoc-gauche shadow">
+                <div class="card-header bg-transparent border-0">Mes médicaments</div>
+                <hr class="m-0" style="background: #4f5278">
                 <!-- Si vide, écrire : Vous n'avez actuellement aucun message à) afficher -->
                 <div class="card-body text-success p-0">
                     {% for medoc in medocs %}
-                        <a href="{{ path('app_medicpage_index',{'id': medoc.id}) }}">
-                        <div class="card">
-                            <div class="card-body">
-                                {{ medoc.nom }}
+                        <a href="{{ path('app_medicpage_index',{'id': medoc.id}) }}"
+                           class="text-decoration-none text-light">
+                            <div class="card border-0">
+                                <div class="card-body liste-gauche">
+                                    {{ medoc.nom }}
+                                </div>
                             </div>
-                        </div>
                         </a>
                     {% endfor %}
                 </div>
@@ -25,26 +27,37 @@
         </div>
         <div class="container">
             <div class="col-md-12 col-sm-6 mt-5">
-                <div class="card mb-5 mt-0 infos-user-main bg-success user-card c1">
-                    <a href="{{ path('app_user_profil') }}" class="btn">
-                        <i class="fas fa-user icard"></i>
-                        <div class="card-body infos-user-main-body">
 
-                            <h5 class="card-title text-white">Mes informations</h5>
+                <div class="d-flex justify-content-between">
+                    <div class="card col-8 mb-5 mt-0 infos-user-main bg-success user-card c1 rounded shadow text-left">
+                        <a href="{{ path('app_user_profil') }}" class="btn">
+                            <i class="fas fa-user icard rounded-circle ikon ikon-1"></i>
+                            <div class="card-body infos-user-main-body">
+
+                                <h5 class="card-title text-white">Mes informations</h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card card col-3 mb-5 mt-0 calendrier-main bg-danger user-card c5 rounded shadow">
+                        <i class="far fa-image icard rounded-circle ikon ikon-5 mt-3"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user.nickname }}</h5>
                         </div>
-                    </a>
+                    </div>
                 </div>
 
 
+
+
                 <div class="d-flex justify-content-between">
-                    <div class="card card col-5 mb-5 mt-0 liste-medic-main bg-warning user-card c2">
-                        <i class="fas fa-comment-dots icard"></i>
+                    <div class="card card col-5 mb-5 mt-0 liste-medic-main bg-warning user-card c2 rounded shadow">
+                        <i class="fas fa-comment-dots icard rounded-circle ikon ikon-2 mt-3"></i>
                         <div class="card-body">
                             <h5 class="card-title">Mes sujets de discussion</h5>
                         </div>
                     </div>
-                    <div class="card card col-5 mb-5 mt-0 calendrier-main bg-danger user-card c3">
-                        <i class="fas fa-calendar-alt icard"></i>
+                    <div class="card card col-6 mb-5 mt-0 calendrier-main bg-danger user-card c3 rounded shadow">
+                        <i class="fas fa-calendar-alt icard rounded-circle ikon ikon-3 mt-3"></i>
                         <div class="card-body">
                             <h5 class="card-title">Mon calendrier</h5>
                         </div>
@@ -52,31 +65,50 @@
                 </div>
 
 
-                <div class="card card mb-5 mt-0 ordonnance-main bg-primary user-card c4">
-                    <i class="fas fa-file-medical icard"></i>
-                    <div class="card-body">
-                        <h5 class="card-title">Mes ordonnances</h5>
+                <div class="d-flex justify-content-between">
+                    <div class="card card col-7 mb-5 mt-0 liste-medic-main bg-warning user-card c5 rounded shadow">
+                        <i class="fas fa-file-medical icard rounded-circle ikon ikon-5 mt-3"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Mes ordonnances</h5>
+                            <hr class="bg-light">
+                            {% for prescription in prescriptions %}
+                                <p>• {{ prescription.registrationDate|date('d/m/Y') }}
+                                    : {{ prescription.medicaments.nom }},
+                                    {{ prescription.frequency }} fois par jour pendant {{ prescription.treatmentDuration }} jour(s).</p>
+                                <hr class="w-75" style="background: rgba(173,200,255,0.38);">
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card card col-4 mb-5 mt-0 ordonnance-main bg-primary user-card c4 rounded shadow poulou">
+                        <a href="{{ path('app_prescription_index') }}" class="btn text-light">
+                        <i class="fas fa-plus icard rounded-circle ikon ikon-4 mt-3"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Ajouter une ordonnance</h5>
+                        </div>
+                        </a>
                     </div>
                 </div>
-                {% for prescription in prescriptions %}
-                    <p>{{ prescription.id }} {{ prescription.frequency }} {{ prescription.registrationDate|date('d/m/Y') }} {{ prescription.medicaments.nom }}</p>
-                {% endfor %}
-
             </div>
         </div>
 
-        <div class="col-md-2 col-sm-6 mt-5 ">
-            <div class="card border-success mb-3">
-                <div class="card-header  border-success text-center bg-dark text-light">Mes messages récents</div>
+        <div class="col-md-2 col-sm-6 mt-5 rounded">
+            <div class="card border-0 mb-3">
+                <div class="card-header  border-0 text-center bg-dark text-light medoc-gauche shadow">
+                    Mes messages récents
+                </div>
+                <hr class="m-0" style="background: #4f5278">
                 <!-- Si vide, écrire : Vous n'avez actuellement aucun message à) afficher -->
-                <div class="card-body text-success overflow-auto msg-recents">
+                <div class="card-body text-success overflow-auto msg-recents liste-droite">
                     {% for messages in message %}
-                        <a href="{{ path('app_comment_index', {'id': messages.thread.id}) }}">
-                            <h5 class="card-title">Dans : {{ messages.thread.title }}</h5>
-                            <h5 class="card-title">Le : {{ messages.publicationDate|date('d/m/Y') }}
-                                à {{ messages.publicationDate|date('H:i') }}</h5>
-                            <p class="card-text">{{ messages.content }}
-                            <hr>
+                        <a href="{{ path('app_comment_index', {'id': messages.thread.id}) }}"
+                           class="text-decoration-none text-light">
+                            <h5 class="card-title mb-0">Dans : {{ messages.thread.title }}</h5>
+                            <small class="card-title">
+                                Le : {{ messages.publicationDate|date('d/m/Y') }}
+                                à {{ messages.publicationDate|date('H:i') }}
+                            </small>
+                            <h6 class="card-text pt-4">{{ messages.content }} </h6>
+                            <hr class="" style="background: #4f5278">
                         </a>
                     {% endfor %}
 

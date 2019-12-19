@@ -2,14 +2,12 @@
 
 {% block title %}{{ parent() }} | Prescription{% endblock %}
 
-{% block title %}Ma prescription{% endblock %}
-
 {% block body %}
-    <h1 class="text-center">Ajouter une ordonnance</h1>
+    <h1 class="text-center text-light mt-5">Ajouter une ordonnance</h1>
     <div class="container">
 
         {{ form_start(form) }}
-        <div>
+        <div class="text-light">
             {{ form_row(form.registrationDate) }}
             {{ form_row(form.treatmentDuration) }}
             {{ form_row(form.frequency) }}
@@ -18,7 +16,7 @@
 
 
         <div class="col-6 mx-auto">
-            <button type="submit" class="btn btn-primary w-100">
+            <button type="submit" class="btn btn-primary w-100 boutonsub">
                 Enregistrer
             </button>
         </div>
